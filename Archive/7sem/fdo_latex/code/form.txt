@@ -1,0 +1,23 @@
+= form_for @course do |f|
+  -if @course.errors.any?
+    .msg.error
+      %h2= "При сохранении произошли ошибки"
+      %ul
+        - @course.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :start_date
+    %br
+    = f.text_field :start_date
+  .field
+    = f.label :finish_date
+    %br
+    = f.text_field :finish_date
+  .field
+    =f.label :discipline_id
+    %br
+    =f.text_field :discipline_token,"data-pre"=>Discipline.where
+(:id => @course.discipline_id).map(&:attributes).to_json
+  .actions
+    = f.submit 'Добавить'

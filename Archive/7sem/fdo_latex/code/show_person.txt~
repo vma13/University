@@ -1,0 +1,19 @@
+-unless @person.prizes.blank?
+  %table
+    %tr
+      %th Год вручения
+      %th Награда
+      %th Номинация
+      %th Фильм
+      -if @current_user && @current_user.admin?
+        %th
+        %th
+    -@person.prizes.each do |prize|
+      %tr
+        %td=prize.year
+        %td=link_to prize.award.name, prize.award
+        %td=prize.nomination.name
+        %td=link_to prize.film.name, prize.film
+        -if @current_user && @current_user.admin?  
+          %td= link_to 'Редактировать', edit_prize_path(prize)   
+          %td= link_to 'Удалить', prize, :confirm=>'Вы уверены?', :method => :delete

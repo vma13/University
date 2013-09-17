@@ -1,0 +1,30 @@
+%h1=@discipline.full_name
+.film
+  .col
+    %dt=Discipline.human_attribute_name(:short_name)
+    %dt=@discipline.short_name
+  .clear
+
+-if !@discipline.courses.blank?
+  %h2 Курсы
+  -i = 1
+  %table
+    %thead
+      %tr
+        %th №
+        %th=Course.human_attribute_name('start_date')
+        %th=Course.human_attribute_name('finish_date')
+    %tbody
+      -@discipline.courses.each do |course|
+        %tr
+          %td=i
+          %td= link_to course.start_date.strftime("%d.%m.%Y"),course
+          %td= link_to course.finish_date.strftime("%d.%m.%Y"),course
+        -i += 1
+%br
+=link_to "К списку дисциплин", disciplines_path
+-if @current_user && @current_user.admin?
+  \|
+  =link_to "Редактировать", edit_discipline_path(@discipline)
+  \|
+  =link_to "Удалить", @discipline,:confirm => "Вы уверены?", :method => :delete

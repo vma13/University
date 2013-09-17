@@ -1,0 +1,27 @@
+%h1 Список школьников
+%br
+-if @current_user && ( @current_user.admin? || @current_user.regular? )
+  = link_to image_tag("/assets/images/add_sc.png", :size => "40x40", :title => "Добавить школьника"), new_schoolkid_path
+  &nbsp; | &nbsp;
+= link_to image_tag("/assets/images/search.png", :size => "40x40", :title => "Найти школьника"), search_schoolkids_path
+%br
+%br
+%table
+  %thead
+    %tr
+      %th №  
+      %th ФИО
+      %th
+      %th
+        %tbody
+          - i = 1
+          - @schoolkid.each do |schoolkid|
+            %tr
+              %td= i
+              %td=link_to schoolkid.fio, schoolkid
+              -if @current_user && ( @current_user.admin? || @current_user.regular? )
+                %td= link_to image_tag("/assets/images/edit.png", :size => "32x32", :title => "Редактировать"), edit_schoolkid_path(schoolkid)
+                %td= link_to image_tag("/assets/images/delete.png", :size => "32x32", :title => "Удалить"), schoolkid, :confirm => 'Вы уверены?', :method => :delete
+              - i += 1
+%br
+=paginate @schoolkid

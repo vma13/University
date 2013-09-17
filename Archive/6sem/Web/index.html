@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <title>My page</title>
+    <!--
+       META
+       SCRIPT
+       LINK
+       STYLE
+      -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="Author" content="Nikolay"/>
+    <meta name="keywords" content="My page"/>
+
+    <meta name="description" content="My page" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
+  <body>
+    <form name = "myform" action = "" method = "post">       
+      <table>
+ 	<tbody>
+	 <tr>
+          <td>Login:</td>
+	  <td><input name = "login" type = "text" size = 20></td>
+	 </tr>
+          <td>Password:</td>
+	  <td><input type = "password" size = 20></td>
+	 </tr>
+	 <tr>
+          <td>E-mail:</td>
+	  <td><input type = "text" size = 20 readonly = "" value = "oni3@mail.msiu.ru"></td>
+         </tr>
+         <th>Группа</th>
+	 <tr>
+	  <td>4362</td><td><input type = "checkbox" name = "groups[]" value = "4362"></td>
+         </tr>
+	 <tr>
+	  <td>5362</td><td><input type = "checkbox" name = "groups[]" value = "5362"></td>
+         </tr>
+	 <tr>
+	  <td>6362</td><td><input type = "checkbox" name = "groups[]" value = "6362" checked></td>
+	 </tr>
+         <th>Пол</th>
+	 <tr>
+	   <td>М</td><td><input type = "radio" name = "male" value = "1" cheched></td>
+         </tr>
+	 <tr>
+	   <td>Ж</td><td><input type = "radio" name = "female" value = "0"></td>
+         </tr>	
+	 <tr>
+           <td>
+	   <fieldset>
+	   <legend>Город</legend> 
+	     <select name = "cityes[]">
+              <optgroup label = "Россия">
+	       <option value = "4">Москва</option>
+	       <option value = "3">Санкт-Петербург</option>
+	       <option value = "2">Воронеж</option>
+	       <option value = "1">Владивосток</option>
+              </optgroup>
+	     </select>
+	   </fieldset>
+           </td>
+         </tr>
+	</tbody>
+      </table>    
+    </form>
+  </body>			 
+</html>
+<!--
+календарь на март месяц
+
+         Март
+пн вт ср чт пт сб вс
+сб вс - красным
+события разным цветом
+-->

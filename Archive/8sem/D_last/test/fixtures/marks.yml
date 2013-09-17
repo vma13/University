@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  schoolkid_id: 1
+  mark: 1
+  pres: false
+
+two:
+  schoolkid_id: 1
+  mark: 1
+  pres: false

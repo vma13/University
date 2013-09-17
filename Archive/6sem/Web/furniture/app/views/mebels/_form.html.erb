@@ -1,0 +1,29 @@
+<%= form_for(@mebel) do |f| %>
+  <% if @mebel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mebel.errors.count, "error") %> prohibited this mebel from being saved:</h2>
+
+      <ul>
+      <% @mebel.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Category %><br />
+    <%= f.text_field :Category %>
+  </div>
+  <div class="field">
+    <%= f.label :Subject %><br />
+    <%= f.text_field :Subject %>
+  </div>
+  <div class="field">
+    <%= f.label :Producer %><br />
+    <%= f.text_field :Producer %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

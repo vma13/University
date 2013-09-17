@@ -1,0 +1,36 @@
+%h1="Школа №#{@school.number}"
+%dt=School.human_attribute_name(:stype)
+%dt=@school.school_type?
+.film
+  .col
+    %dt ФИО директора:
+    %dt= @school.fio?
+    %br
+    %dt Официальное ФИО директора:
+    %dt= @school.official_fio?
+    %dt= School.human_attribute_name(:telephone)
+    %dt= @school.telephone
+  .clear
+
+-unless @school.school_groups.blank?
+  %h2 Классы
+  -i = 1
+  %table
+    %thead
+      %tr
+        %th №
+        %th=SchoolGroup.human_attribute_name('number')
+        %th=SchoolGroup.human_attribute_name('year')
+    %tbody
+      -@school.school_groups.each do |sgroup|
+        %tr
+          %td=i
+          %td= link_to sgroup.number, sgroup   
+          %td= link_to sgroup.year, sgroup
+        -i += 1
+%br
+= link_to image_tag("/assets/images/list.png", :size => "32x32", :title => "К списку школ"), schools_path
+&nbsp; | &nbsp;
+= link_to image_tag("/assets/images/edit.png", :size => "32x32", :title => "Редактировать"),edit_school_path(@school)
+&nbsp; | &nbsp;
+= link_to image_tag("/assets/images/delete.png", :size => "32x32", :title => "Удалить"), @school,:confirm => "Вы уверены?",:method => :delete

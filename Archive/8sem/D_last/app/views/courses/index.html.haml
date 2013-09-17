@@ -1,0 +1,23 @@
+%h1 Курсы
+
+%table
+  %thead
+    %tr
+      %th Дисциплина
+      %th=Course.human_attribute_name('start_date')
+      %th=Course.human_attribute_name('finish_date')
+      -unless @courses.blank?
+        %th
+        %th
+  %tbody
+    -@courses.each do |course|
+      %tr
+        %td= link_to course.discipline.full_name
+        %td= link_to course.start_date.strftime("%d.%m.%Y"), course
+        %td= link_to course.finish_date.strftime("%d.%m.%Y"), course
+        %td= link_to image_tag("/assets/images/edit.png", :size => "32x32", :title => "Редактировать"), edit_course_path(course)
+        %td= link_to image_tag("/assets/images/delete.png", :size => "32x32", :title => "Удалить"), course, :confirm => 'Вы уверены?', :method => :delete
+
+=paginate @courses
+%br
+= link_to image_tag("/assets/images/add.png", :size => "32x32", :title => "Добавить курс"), new_course_path

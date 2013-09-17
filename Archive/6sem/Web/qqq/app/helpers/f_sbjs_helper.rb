@@ -1,0 +1,2 @@
+module FSbjsHelper
+end

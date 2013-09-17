@@ -1,0 +1,289 @@
+#include <GL/glut.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdio.h>
+#include <strings.h>
+
+double alpha_rot = 10.0;
+double alpha_rot_cube_rot = 0.0;
+
+double x = 0.0;
+double y = 1.0;
+double z = 25.0;
+double matrix[16];
+double angle = 0.0;
+
+GLint H = 4;
+float mat_ambient[]= {0.0,0.0,0.0};
+float mat_specular[]={1.0,1.0,1.0};
+float shininess= 0.4*128;  
+
+
+double delta = M_PI/3.0f;
+
+//float R = 10.0;
+float R0 = 8.0;
+static GLuint name[3];
+GLdouble alpha = M_PI/3, beta = M_PI/3;
+
+
+/* read texture from file to array */
+void objread(char *fname, GLubyte a[64][64][4], int w, int h){
+  char s[15];
+  int k, i, j;
+  FILE *f = fopen(fname, "r");
+  if (f == NULL){
+    perror(fname);
+    exit(1);
+  }
+ 
+  for (k = 0; k < h*w ; k++){
+    j = k / w;
+    i = k % w;
+    fgets(s, 15, f);
+    a[i][j][0] = (GLubyte)atoi(s);
+    fgets(s, 15, f);
+    a[i][j][1] = (GLubyte)atoi(s);
+    fgets(s, 15, f);
+    a[i][j][2] = (GLubyte)atoi(s);
+    a[i][j][3] = (GLubyte)255;
+  }
+  fclose(f);
+}
+
+/* set parameters of textures */
+void assigntex(GLubyte a[64][64][4], GLuint *n){
+  glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+  glBindTexture(GL_TEXTURE_2D, *n);
+  glTexParameteri (GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
+  glTexParameteri (GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
+  glTexParameteri (GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+  glTexParameteri (GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 64, 64, 0, GL_RGBA, GL_UNSIGNED_BYTE, a);
+  glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+}
+
+/* load texures & set parameters */
+void loadtex(){
+  GLubyte f1[64][64][4];
+  GLubyte f2[64][64][4];
+  GLubyte f3[64][64][4];
+
+  objread("cheese", f1, 64, 64); /* texture of cheese */
+  objread("wood", f2, 64, 64);   /* texture of wood */
+  objread("stone", f3, 64, 64);  /* texture of stone */
+  
+  glGenTextures(3, name);
+
+  assigntex(f1, &name[0]);
+  assigntex(f2, &name[1]);
+  assigntex(f3, &name[2]);
+}
+
+
+void init(void){
+	glClearColor(0, 0, 0, 1);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glColor3ub(255,255,255);
+}
+
+void light(){
+  GLfloat light_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
+  GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0};
+  GLfloat light_specular[] = { 0.0, 0.0, 0.0, 0.0 };
+  GLfloat light_position[] = { 1000.0, 0.0, 500.0, 1.0 };
+  GLfloat light_position1[] = { 0.0, 1000.0, 0.0, 1.0 };
+
+  glLightfv (GL_LIGHT0, GL_AMBIENT, light_ambient);
+  glLightfv (GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+  glLightfv (GL_LIGHT0, GL_SPECULAR, light_specular);
+  glLightfv (GL_LIGHT0, GL_POSITION, light_position);
+
+  glLightfv (GL_LIGHT1, GL_AMBIENT, light_ambient);
+  glLightfv (GL_LIGHT1, GL_DIFFUSE, light_diffuse);
+  glLightfv (GL_LIGHT1, GL_SPECULAR, light_specular);
+  glLightfv (GL_LIGHT1, GL_POSITION, light_position1);
+   
+  glMaterialfv (GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
+  glMaterialfv (GL_FRONT_AND_BACK, GL_SPECULAR, mat_specular);
+  glMaterialf  (GL_FRONT, GL_SHININESS, shininess);
+
+  glEnable(GL_LIGHTING);
+  glEnable(GL_LIGHT0);
+  glEnable(GL_LIGHT1);
+}
+
+void draw(void) {
+   
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    GLfloat value[4] = {5.0, 5.0, 5.0, 0.4};
+    glLightfv(GL_LIGHT0,GL_POSITION,value);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_COLOR_MATERIAL);
+
+    int i = 2;
+
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, name[0]);
+
+    double alpha, beta;
+
+    glBegin(GL_TRIANGLES);
+    for(alpha = 0.0f; alpha < M_PI*2.0f; alpha += delta){
+	for(beta = 0.0f; beta < M_PI*2.0f; beta += delta){
+	    glNormal3f(sin(alpha)*sin(beta)*R0, cos(beta)*R0, cos(alpha)*sin(beta)*R0);
+	    glTexCoord2f(0,0);
+	    glVertex3f(sin(alpha)*sin(beta)*R0, cos(beta)*R0, cos(alpha)*sin(beta)*R0);
+	    
+	    glNormal3f(sin(alpha+delta)*sin(beta)*R0, cos(beta)*R0, cos(alpha+delta)*sin(beta)*R0);
+	    glTexCoord2f(0,1);
+	    glVertex3f(sin(alpha+delta)*sin(beta)*R0, cos(beta)*R0, cos(alpha+delta)*sin(beta)*R0);
+	    
+	    glNormal3f(sin(alpha+delta)*sin(beta+delta)*R0, cos(beta+delta)*R0, cos(alpha+delta)*sin(beta+delta)*R0);
+	    glTexCoord2f(1,0);
+	    glVertex3f(sin(alpha+delta)*sin(beta+delta)*R0, cos(beta+delta)*R0, cos(alpha+delta)*sin(beta+delta)*R0);
+	    
+
+		glNormal3f(sin(alpha)*sin(beta)*R0, cos(beta)*R0, cos(alpha)*sin(beta)*R0);
+	    glTexCoord2f(0,0);
+	    glVertex3f(sin(alpha)*sin(beta)*R0, cos(beta)*R0, cos(alpha)*sin(beta)*R0);
+	    
+	    glNormal3f(sin(alpha+delta)*sin(beta)*R0, cos(beta)*R0, cos(alpha+delta)*sin(beta)*R0);
+	    glTexCoord2f(0,1);
+	    glVertex3f(sin(alpha+delta)*sin(beta)*R0, cos(beta)*R0, cos(alpha+delta)*sin(beta)*R0);
+	    
+
+	    glNormal3f(sin(alpha)*sin(beta+delta)*R0, cos(beta+delta)*R0, cos(alpha)*sin(beta+delta)*R0);	    
+	    glTexCoord2f(1,1);
+	    glVertex3f(sin(alpha)*sin(beta+delta)*R0, cos(beta+delta)*R0, cos(alpha)*sin(beta+delta)*R0);
+	}
+    }   
+    glEnd();
+    glFlush();
+}
+
+void display(void)
+{	
+	init();
+    glMatrixMode( GL_MODELVIEW );
+    glLoadIdentity();
+    glRotated( angle, x, y, 0);
+    glMultMatrixd( matrix );;
+    glGetDoublev( GL_MODELVIEW_MATRIX, matrix);
+
+    glLoadIdentity();
+    gluLookAt( 0, 0, z, 0, 0, 0, 0, 1, 0 );
+    glMultMatrixd( matrix );
+	light();  
+	draw();
+    glFlush();
+	glutSwapBuffers();
+}
+
+void reshape (int w, int h)
+{
+   glViewport (0, 0, (GLsizei) w, (GLsizei) h);
+   glMatrixMode (GL_PROJECTION);
+   glLoadIdentity ();
+   glFrustum (-1.0, 1.0, -1.0, 1.0, 1.5, 35.0);
+   glMatrixMode (GL_MODELVIEW);
+
+}
+
+void clear(){
+	x = 0.0;
+	y = 0.0;
+	angle = 0.0;
+}
+
+void setX(){
+	x = 1.0;
+}
+
+
+void setY(){
+	y = 1.0;
+}
+
+void setAngle(double ang){
+
+	angle = ang;
+}
+
+
+void specialKey ( int key, int x, int y )
+{
+
+	clear();
+    if(key == GLUT_KEY_UP){
+		setAngle(alpha_rot);
+		setX();
+		glutPostRedisplay();
+	}
+
+    if(key == GLUT_KEY_DOWN){
+		setX();
+		setAngle(-alpha_rot);
+		glutPostRedisplay();
+	}        
+    if(key == GLUT_KEY_RIGHT){       
+		setY();
+        setAngle(-alpha_rot);      
+		glutPostRedisplay();
+	}
+
+    if(key == GLUT_KEY_LEFT){       
+		setY();
+        setAngle(alpha_rot);
+		glutPostRedisplay();
+	}
+
+}
+
+
+void Keyboard(unsigned char key, int x, int y)
+{
+#define ESCAPE '\033'
+	clear();
+    if( key == ESCAPE )
+        _Exit(0);
+
+    if( key == '+' ){       
+		z -=  ( z - 0.5 < 2 ) ? 0 : 0.5;
+	
+		glutPostRedisplay();
+	}
+
+    if( key == '-' ){       
+		z += ( z + 0.5 > 30 ) ? 0 : 0.5;
+		glutPostRedisplay();
+	}  
+
+}
+
+int main(int argc, char** argv)
+{
+   glutInit(&argc, argv);
+   glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+   glutInitWindowSize (500, 500);
+   glutInitWindowPosition (100, 100);
+   glutCreateWindow (argv[0]);
+ 
+   glEnable(GL_DEPTH_TEST);
+   glEnable(GL_NORMALIZE);
+   glEnable(GL_COLOR_MATERIAL);
+   glColorMaterial(GL_FRONT_AND_BACK,GL_DIFFUSE);
+
+   init();
+   glLoadIdentity();
+   glGetDoublev( GL_MODELVIEW_MATRIX, matrix);
+	loadtex();
+   glutDisplayFunc(display);
+   glutReshapeFunc(reshape);    
+   glutKeyboardFunc(Keyboard);
+   glutSpecialFunc(specialKey);
+   glutMainLoop();
+   return 0;
+}
+

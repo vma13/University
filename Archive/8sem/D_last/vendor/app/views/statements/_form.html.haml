@@ -1,0 +1,32 @@
+= form_for @statement do |f|
+  -if @statement.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@statement.errors.count, "error")} prohibited this statement from being saved:"
+      %ul
+        - @statement.errors.full_messages.each do |msg|
+          %li= msg
+          
+      
+  .field
+    = f.label :start
+    = f.text_field :start, :size => 10
+    &nbsp
+    = f.label :finish
+    = f.text_field :finish, :size => 10
+  .field
+    = f.label :group_id
+    = f.select :group_id, Group.all.map{|g| [g.number, g.id]}
+  //  = f.label :group_id
+  //  %br
+  //  .questions
+  //    =f.collection_select :group_id, Group.all, :id, :number, :prompt=>"Select Group"
+  //.field
+  //  = f.label :schoolkid_id
+  //  %br
+  //  =f.grouped_collection_select :schoolkid_id, Group.order(:number), :schoolkids, :number, :id, :second_name, :include_blank=>true
+  .field
+    = f.label :discipline_id
+    = f.select :discipline_id, Discipline.all.map{|t| [t.full_name, t.id]}
+  %br
+  .actions
+    = f.submit 'Перейти к ведомости'

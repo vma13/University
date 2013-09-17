@@ -1,0 +1,21 @@
+%h1 Список дисциплин
+%table
+  %thead
+    %tr
+      %th=Discipline.human_attribute_name('full_name')
+      -if @current_user && @current_user.admin?
+        %th
+        %th
+  %tbody
+    -@disciplines.each do |discipline|
+      %tr
+        %td= link_to discipline.full_name, discipline
+        -if @current_user && @current_user.admin?
+          %td= link_to 'Редактировать', edit_discipline_path(discipline)
+          %td= link_to 'Удалить', discipline, :confirm => 'Вы уверены?', :method => :delete
+
+=paginate @disciplines
+
+%br
+-if @current_user && @current_user.admin?
+  =link_to "Добавить дисциплину", new_discipline_path

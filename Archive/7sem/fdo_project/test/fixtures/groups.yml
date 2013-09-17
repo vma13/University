@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  number: MyString
+  corse_id: 1
+  year: 1
+  gtype: false
+
+two:
+  number: MyString
+  corse_id: 1
+  year: 1
+  gtype: false

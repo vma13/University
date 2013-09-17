@@ -1,0 +1,52 @@
+\begin{center}
+Ведомость группы \No \space <%= @group.number %> \\
+
+\vspace{0.5cm}
+
+<% str = "| l | l | "%>
+<% count = @group.statements.where('date < ?', Time.now.to_date).count %>
+<% i = 0 %>
+<% while i < count %>
+  <% str += " l |" %>
+  <% i += 1 %>
+<% end %>
+\begin{tabular}{<%= str %> }
+\hline
+\No &
+Школьник &
+<% i = 0 %>
+<% @group.statements.where('date < ?', Time.now.to_date).each do |statement| %>
+  <%= statement.date.strftime("%d.%m") %> 
+  <% if i < count-1 %>
+    &
+  <% end %>
+  <% i += 1 %>
+<% end %>
+\\ \hline
+<% number = 1%>
+<% @group.schoolkids.each do |kid| %>
+  <%= number %> &
+  <%= kid.fio %> &
+  <% @group.statements.where('date < ?', Time.now.to_date).each do |stat| %>
+    <% j = 0 %>
+    <% mark = SchoolkidStatement.where(:schoolkid_id => kid.id, :statement_id => stat.id).first %>
+    \phantom{||}
+    <% if mark != nil %>
+       <%if mark.pres %>
+         +
+       <% else %>
+         --
+       <% end %>
+    <% else %>
+      --
+    <% end %>
+    <% if j < @group.statements.where('date < ?', Time.now.to_date).count %>
+       &
+    <% end %>
+  <% end %>
+  <% number += 1 %>
+  \hline
+<% end %>
+\end{tabular}
+\end{center}
+

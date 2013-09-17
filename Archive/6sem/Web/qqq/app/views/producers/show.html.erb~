@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @producer.name %>
+</p>
+
+
+<table>		
+   <tr>
+      <th>Название</th>
+   </tr>
+
+<% mebel = FSbj.where(:producer_id == @producer.id) %>
+<% mebel.map do |m| %>
+  <tr>
+    <td>
+	<%= m.name%>
+    </td>
+  </tr>   
+<% end %>
+
+</table>
+
+<%= link_to 'Edit', edit_producer_path(@producer) %> |
+<%= link_to 'Back', producers_path %>

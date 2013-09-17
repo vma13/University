@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Users</title>
+  <%= stylesheet_link_tag "main","scaffold" %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div id="wrap"
+	<div id="header">Система управления пользователями</div>
+	<div id="wrapper">
+		<div id="sidebar">
+		<%render "layouts/menu"%>
+	 	</div>		
+		<div id="content">
+			<%= yield %>
+		</div>
+	</div>
+	<div id="footer">
+		&copy; ГОУ МГИУ, <%= footer_years %>
+	</div>
+</body>
+</html>

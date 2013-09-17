@@ -1,0 +1,27 @@
+= form_tag search_schoolkids_path, :method => 'get' do
+  = label :second_name, "Фамилия:"
+  = text_field_tag :second_name, params[:second_name]
+  %br
+  = label :first_name, "Имя:"
+  = text_field_tag :first_name, params[:first_name]
+  %br
+  = label :last_name, "Отчество:"
+  = text_field_tag :last_name, params[:last_name]
+  %br
+  =submit_tag "Поиск", :name => nil
+
+%br
+-if !@search.blank?
+  %br
+  %table
+    %thead
+      %tr
+        %th=Schoolkid.human_attribute_name('second_name')
+        %th=Schoolkid.human_attribute_name('first_name')
+        %th=Schoolkid.human_attribute_name('last_name')
+    %tbody
+      - @search.each do |schoolkid|
+        %tr         
+          %td=link_to schoolkid.second_name, schoolkid
+          %td=link_to schoolkid.first_name, schoolkid
+          %td=link_to schoolkid.last_name, schoolkid

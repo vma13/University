@@ -1,0 +1,27 @@
+<h1>listing</h1>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Subject</th>
+    <th>Producer</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mebels.each do |mebel| %>
+  <tr>
+    <td><%= mebel.Category %></td>
+    <td><%= mebel.Subject %></td>
+    <td><%= mebel.Producer %></td>
+    <td><%= link_to 'Show', mebel %></td>
+    <td><%= link_to 'Edit', edit_mebel_path(mebel) %></td>
+    <td><%= link_to 'Destroy', mebel, :confirm => 'Вы уверены?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Subject', new_mebel_path %>

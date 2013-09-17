@@ -1,0 +1,7 @@
+.fields
+  .field
+    = f.label :number
+    = f.text_field :number, :size=>10
+    =f.select(:year, (1990..Time.now.year).to_a.reverse, :selected=>(f.object.year || Time.now.year))
+    = link_to_remove_fields image_tag("/assets/images/delete.png", :size => "32x32", :title =>  "Удалить"), f
+

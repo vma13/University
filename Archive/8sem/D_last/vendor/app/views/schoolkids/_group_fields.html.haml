@@ -1,0 +1,6 @@
+.fields
+  .field
+    = f.label :group_id
+    = f.select :group_id, Group.all.map{|p| [ p.number, p.id ] }  
+    = link_to_remove_fields image_tag("/assets/images/delete.png", :size => "32x32", :title =>  "Удалить"), f
+

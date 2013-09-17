@@ -1,0 +1,39 @@
+=form_for @group,:html=>{:multipart=>true} do |f|
+  -if @group.errors.any?
+    .div.error
+      %h2 При сохранении произошли ошибки
+      %ul
+        -@group.errors.full_messages.each do |msg|
+          %li=msg
+
+  .field
+    = f.label :number
+    %br
+    = f.text_field :number
+  .field
+    = f.label :discipline_id
+    %br
+    .questions
+      =f.collection_select :discipline_id, Discipline.all, :id, :full_name, :prompt=>"Select discipline"
+  .field
+    = f.label :course_id
+    %br
+    =f.grouped_collection_select :course_id, Discipline.order(:full_name), :courses, :full_name, :id, :start_date, :include_blank=>true
+  .field
+    = f.label :year
+    %br
+    =f.select(:year, (1990..Time.now.year).to_a.reverse, :selected=>(f.object.year || Time.now.year))
+  .field
+    = f.label :week_day
+    %br
+    = f.select :week_day, options_for_select([["Не указано", 0], ["Понедельник", 1], ["Вторник",2], ["Среда",3], ["Четверг",4], ["Пятница",5], ["Суббота",6], ["Воскресение",7]], @group.week_day)
+  .field
+    = f.label :gtype
+    %br
+    = f.radio_button :gtype, "1", :checked=>@group.gtype?
+    ФДО&nbsp
+    = f.radio_button :gtype, "0", :checked=>!@group.gtype?
+    ПШ
+    %br
+  .actions
+    = f.submit 'Сохранить'

@@ -1,0 +1,31 @@
+%h1=Discipline.find(@course.discipline_id).full_name
+
+%p
+  %b="#{Course.human_attribute_name(:start_date)}:"
+  = @course.start_date.strftime("%d.%m.%Y")
+  %br
+  %b="#{Course.human_attribute_name(:finish_date)}:"
+  = @course.finish_date.strftime("%d.%m.%Y")
+  %br
+
+-unless @course.school_groups.blank?
+  %h3 Классы, обучающиеся в рамках данного курса
+  - i = 1
+  %table
+    %thead
+      %tr
+        %th №
+        %th=SchoolGroup.human_attribute_name('number')
+    %tbody
+      -@course.school_groups.each do |group|
+        %tr
+          %td= i
+          %td= link_to group.number, group
+        - i += 1
+  %br
+
+= link_to image_tag("/assets/images/edit.png", :size => "32x32", :title => "Редактировать"), edit_course_path(@course)
+&nbsp; | &nbsp;
+= link_to image_tag("/assets/images/prev.png", :size => "32x32", :title => "Назад"), courses_path
+&nbsp; | &nbsp;
+= link_to image_tag("/assets/images/generate.png", :size => "32x32", :title => "Прикрепить классы"), generate_course_path(@course)

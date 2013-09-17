@@ -1,0 +1,19 @@
+%h1 Список школ
+
+%table
+  %thead
+    %tr
+      %th=School.human_attribute_name(:number)
+      -unless @schools.blank?
+        %th
+        %th
+  %tbody
+    - @schools.each do |school|
+      %tr
+        %td=link_to school.number, school
+        %td= link_to image_tag("/assets/images/edit.png", :size => "32x32", :title => "Редактировать"), edit_school_path(school)
+        %td= link_to image_tag("/assets/images/delete.png", :size => "32x32", :title => "Удалить"), school, :confirm => 'Вы уверены?', :method => :delete
+
+=paginate @schools
+%br
+= link_to image_tag("/assets/images/add.png", :size => "32x32", :title => "Добавить школу"), new_school_path

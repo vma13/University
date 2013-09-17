@@ -1,0 +1,32 @@
+class Album < ActiveRecord::Base
+
+  validates_with AlbumValidator
+
+
+  paginates_per 10
+  default_scope order(:name)
+  belongs_to :film
+  belongs_to :person
+  belongs_to :user
+  has_many :images, :dependent => :destroy
+  has_attached_file :cover, :styles => { :medium => "200x200", :thumb => "100x100" },
+                    :convert_options => {:thumb => "-gravity center -extent 100x100"}
+  validates :name, :presence => true, 
+                   :uniqueness => true,
+                   :length => { :within => 3..40 }
+  validates :user_id, :presence => true
+  validates :film_id, :presence => true, :if => "person_id.nil?"
+  validates :person_id, :presence => true, :if => "film_id.nil?"
+  
+  attr_reader :person_tokens
+  
+  attr_reader :film_tokens
+  
+  def film_tokens=(ids)
+    self.film_id = ids
+  end
+  
+  def person_tokens=(ids)
+    self.person_id = ids
+  end
+end

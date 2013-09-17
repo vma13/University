@@ -1,0 +1,15 @@
+%h1
+  Пользователь: 
+  =@user.login
+%p
+  %b="#{User.human_attribute_name(:email)}: "
+  =@user.email
+  %br
+  %b="#{User.human_attribute_name(:role)}: "
+  =@user.human_role
+= link_to image_tag("/assets/images/prev.png", :size => "32x32", :title => "Назад"), users_path
+&nbsp; | &nbsp;
+- if @current_user.admin?
+  = link_to image_tag("/assets/images/edit.png", :size => "32x32", :title => "Редактировать"), edit_user_path(@user)
+  &nbsp; | &nbsp;
+=link_to image_tag("/assets/images/change.png", :size => "32x32", :title => "Изменить пароль"), change_user_password_user_path

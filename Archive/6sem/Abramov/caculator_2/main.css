@@ -1,0 +1,36 @@
+* { text-align: center }
+
+table {
+    width: 250px;
+    margin: 0px auto;
+    border: 3px;
+    background-color: #444;
+}
+
+.no {
+    font-family: verdana;
+    background-color: black;
+    color: orange; 
+}
+
+.operation {
+    height: 25px;
+    width: 35px;
+    margin: 0 20px;
+    font-size: 10px;
+    font-family: verdana;
+    background-color: #7c7c7c;
+    border: 5px groove;
+    color: white;
+}
+
+.twocols {
+    height: 25px;
+    width: 35px;
+    margin: 0 18px;
+    font-size: 10px;
+    font-family: verdana;
+    background-color: #BB0400;
+    border: 5px groove #111;
+    color: white; 
+}

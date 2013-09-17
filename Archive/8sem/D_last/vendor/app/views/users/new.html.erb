@@ -1,0 +1,21 @@
+<h1>Регистрация пользователя</h1>
+<% @user.password = @user.password_confirmation = nil %>
+
+<%= form_for :user, :url => users_path do |f| -%>
+<p><%= label_tag 'Логин' %><br/>
+<%= f.text_field :login %></p>
+
+<p><%= label_tag 'Почта' %><br/>
+<%= f.text_field :email %></p>
+
+<p><%= label_tag 'Пароль' %><br/>
+<%= f.password_field :password %></p>
+
+<p><%= label_tag 'Подтвердите пароль', 'Confirm Password' %><br/>
+<%= f.password_field :password_confirmation %></p>
+
+<p><%= label_tag 'Роль' %><br/>
+<%= f.select :role, options_for_select([["Пользователь ФДО", "0"], ["Преподаватель", "2"]])%></p>
+
+<p><%= submit_tag 'Зарегистрировать' %></p>
+<% end -%>

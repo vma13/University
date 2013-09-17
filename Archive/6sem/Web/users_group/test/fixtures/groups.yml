@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  category: 1
+  opened: false
+  baned: false
+  user_id: 1
+
+two:
+  name: MyString
+  category: 1
+  opened: false
+  baned: false
+  user_id: 1

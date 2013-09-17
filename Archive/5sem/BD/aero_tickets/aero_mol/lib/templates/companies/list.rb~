@@ -1,0 +1,43 @@
+require 'db_core/models/user'
+bool = User.is_administrator(@db, @user)
+count = 0
+"
+<table class = 'list'>
+  <caption>
+    #{create_link(@controller) if bool && @action == :list}
+  </caption>
+  <thead>
+    <tr>
+      <th>
+        Название авиакомпании
+      </th>
+      <th>
+        Код
+      </th>
+      <th>
+        Описание
+      </th>
+      <th>
+        Действия
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+" + @items.map do |i|
+      count += 1
+"
+    <tr class = 'list#{count%2}'>
+      <td>#{i[:name]}</td>
+      <td>#{i[:code]}</td>
+      <td>#{i[:description]}</td>
+      <td>
+        #{view_link(@controller, i[:id]) if bool}
+        #{edit_link(@controller, i[:id]) if bool}
+        #{destroy_link(@controller, i[:id]) if bool}
+      </td>
+    </tr>
+"
+end.join("\n") + "
+  </tbody>
+</table>
+"

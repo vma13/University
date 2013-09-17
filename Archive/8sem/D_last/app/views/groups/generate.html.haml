@@ -1,0 +1,39 @@
+= link_to image_tag("/assets/images/prev.png", :size => "32x32", :title => "Назад"), @group
+\|
+= link_to image_tag("/assets/images/list.png", :size => "32x32", :title => "К списку групп"), groups_path
+.buttonSelect
+  = button_to_function '<--', "move_value('rightTable', 'leftTable')", :class=>'button'
+  %br
+  %br
+  = button_to_function '-->', "move_value('leftTable', 'rightTable')", :class=>'button'
+  %br
+  %br
+  = button_to 'Сохранить', "#", :id=>'move_data'
+.leftTableSelect
+  %h2 Входящие в состав
+  %table{:id=>'leftTable'}
+    %tr
+      %td
+        %input{:type=>"checkbox", :onclick=>"check_all('leftTable')", :name=>"not_use"}
+          Выделить все
+    - @schoolkids.each do |kid|
+      %tr
+        %td
+          %input{:type=>"checkbox", :value=>kid.id} 
+            =kid.fio
+
+.rightTableSelect
+  %h2 Не входящие в состав
+  %table{:id=>'rightTable'}
+    %tr
+      %td
+        %input{:type=>"checkbox", :onclick=>"check_all('rightTable')", :name=>"not_use"}
+          Выделить все
+    - @group.schoolkids.each do |group_kid|
+      %tr
+        %td
+          %input{:type=>"checkbox", :value=>group_kid.id} 
+            =group_kid.fio
+
+.field
+  = hidden_field_tag "group_id", @group.id

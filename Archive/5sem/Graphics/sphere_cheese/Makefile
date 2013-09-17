@@ -1,0 +1,2 @@
+all: 
+	gcc sphere.c -o test -lGL -lGLU -lglut -lm -L/usr/X11R6/lib -lXi -lXmu

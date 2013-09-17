@@ -1,0 +1,20 @@
+= form_for @course do |f|
+  -if @course.errors.any?
+    .msg.error
+      %h2= "При сохранении произошли ошибки"
+      %ul
+        - @course.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    =f.label :discipline_id
+    %br
+    =f.select :discipline_id, Discipline.all.map{|d| [d.full_name, d.id]}
+  .field
+    = f.label :start_date
+    = f.text_field :start_date, :size => 10
+    &nbsp
+    = f.label :finish_date
+    = f.text_field :finish_date, :size => 10
+  .actions
+    = f.submit 'Добавить'

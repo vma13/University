@@ -1,0 +1,61 @@
+*{
+margin: 0;  <!--отступ от края блока(10px 20px 30px 40px с 90о по часовой)-->
+padding:0; <!--осттуп от края элемента внутри -->
+}
+
+#wrap{
+margin:10px 50px;
+background: #0F0;
+}
+
+#sidebar{
+background: #d4d4d4;
+width: 200px; <!--ширина менюшки-->
+float: left;
+}
+
+#header{
+background: #440;
+height: 50px;
+font-size: 32px;
+text-align: center;
+padding-top: 5px;
+text-shadow: 0 -1px 0 #fff; 
+}
+
+#content{
+background:#ccc;
+float: right;
+margin-left: 230px;
+}
+
+#sidebar li{
+margin-left: 20px;
+}
+
+#footer{
+color: red;
+clear: both;
+}
+
+#content h1{
+border-bottom: 3px double #111;
+padding: 10px 20px;
+}
+
+table{
+padding: 10px 0;
+}
+
+table th{
+background: #9c203e;
+color: #fff;
+}
+
+table a{
+color: 0000CC;
+}
+
+a:hover{
+text-decoration: underline;
+}

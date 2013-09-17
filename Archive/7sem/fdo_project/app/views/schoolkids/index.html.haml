@@ -1,0 +1,27 @@
+%h1 Список школьников
+
+%table
+  %thead
+    %tr
+      %th=Schoolkid.human_attribute_name('second_name')
+      %th=Schoolkid.human_attribute_name('first_name')
+      %th=Schoolkid.human_attribute_name('last_name')
+      -if @current_user && @current_user.admin?
+        %th
+        %th
+  %tbody
+    - @schoolkids.each do |schoolkid|
+      %tr
+        %td=link_to schoolkid.second_name, schoolkid
+        %td=link_to schoolkid.first_name, schoolkid
+        %td=link_to schoolkid.last_name, schoolkid
+        -if @current_user && @current_user.admin?
+          %td= link_to 'Редактировать', edit_schoolkid_path(schoolkid)
+          %td= link_to 'Удалить', schoolkid, :confirm => 'Вы уверены?', :method => :delete
+
+=paginate @schoolkids
+%br
+-if @current_user && @current_user.admin?
+  = link_to 'Добавить', new_schoolkid_path
+  \|
+  = link_to 'Поиск', search_schoolkids_path

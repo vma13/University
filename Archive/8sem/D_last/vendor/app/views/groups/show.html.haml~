@@ -1,0 +1,37 @@
+%p
+  %b="#{Group.human_attribute_name(:number)}:"
+  =@group.number
+  %br
+  %b="#{Group.human_attribute_name(:course_id)}:"
+  - c = Course.find( @group.course_id )
+  - d = Discipline.find( c.discipline_id )
+  = link_to d.full_name, d
+  %br
+  %b Продолжительность
+  =link_to c.start_date.strftime("%d.%m.%y").to_s + " - " + c.finish_date.strftime("%m.%d.%y").to_s, c
+  %br
+  %b="#{Group.human_attribute_name(:year)}:"
+  = @group.year
+  %br
+  %b="#{Group.human_attribute_name(:gtype)}:"
+  = @group.group_type?
+
+-unless @group.schoolkids.blank?
+  %h2 Состав группы
+  - i = 1
+  %table
+    %thead
+      %tr
+        %th №
+        %th ФИО
+    %tbody
+      - @group.schoolkids.each do |kid|
+        %tr
+          %td= i
+          %td= link_to kid.fio, kid
+        - i += 1
+
+%br
+= link_to 'Редактировать', edit_group_path(@group)
+\|
+=link_to 'Назад', groups_path

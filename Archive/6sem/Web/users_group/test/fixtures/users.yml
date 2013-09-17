@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  login: MyString
+  password_salt: MyString
+  password_hashed: 
+  email: MyString
+  role: 1
+  ban: false
+
+two:
+  login: MyString
+  password_salt: MyString
+  password_hashed: 
+  email: MyString
+  role: 1
+  ban: false

@@ -1,0 +1,169 @@
+# -*- coding: utf-8 -*-
+class GroupsController < ApplicationController
+  before_filter :check_teacher_user, :only => [:edit, :new, :create, :update, :destroy]
+  before_filter :check_regular_user
+  def stat
+    @group = Group.find(params[:id])
+    type = params[:type].to_i
+    respond_to do |format|    
+      format.pdf {
+        if type == 0
+          render 'statment.pdf.erb'
+        else
+          render 'marks.pdf.erb'
+        end  
+      }
+      format.html {}
+    end
+  end
+  
+  def save_data
+    @group = Group.find(params[:id])
+    @group.groups_save(params[:ids])
+    render :nothing => true
+  end
+  
+  def generate
+    @group = Group.includes(:schoolkids).find(params[:id])
+    course = Course.includes(:school_groups).find(@group.course_id)
+    @schoolkids = Schoolkid.where(:school_group_id => course.school_group_ids).all
+    @schoolkids -= @group.schoolkids        
+  end
+
+  def res
+    @group = Group.includes(:statements,:schoolkids).find( params[:id] )
+  end
+  
+  def create_res
+   s_s=params[:schoolkid_statements]
+   @group=Group.includes(:schoolkids,{:statements=>:schoolkid_statements}).find(params[:id])
+   @group.schoolkids.each do |schoolkid| 
+     @group.statements.each do |statement|
+       schoolkid_statement=statement.schoolkid_statements.detect{|ss| ss.schoolkid_id==schoolkid.id}
+       if schoolkid_statement
+          schoolkid_statement.mark = s_s[schoolkid.id.to_s] && s_s[schoolkid.id.to_s][statement.id.to_s].present?
+       else
+          schoolkid_statement = SchoolkidStatement.new(:statement_id=>statement.id,:schoolkid_id=>schoolkid.id,:mark=>s_s[schoolkid.id.to_s] && s_s[schoolkid.id.to_s][statement.id.to_s].present?)
+       end
+       schoolkid_statement.save
+     end
+   end
+   redirect_to res_group_path(@group)
+  end
+ 
+  def mark
+    @group = Group.includes(:statements,:schoolkids).find( params[:id] )
+  end
+  
+  def create_mark	
+    s_s=params[:schoolkid_statements]
+    @group=Group.includes(:schoolkids,{:statements=>:schoolkid_statements}).find(params[:id])
+    @group.schoolkids.each do |schoolkid| 
+      @group.statements.each do |statement|
+        schoolkid_statement=statement.schoolkid_statements.detect{|ss| ss.schoolkid_id==schoolkid.id}        	    
+        if schoolkid_statement != nil
+          if s_s[schoolkid.id.to_s][statement.id.to_s] != ""
+            schoolkid_statement = SchoolkidStatement.where(:statement_id=>statement.id).first
+            schoolkid_statement.update_attributes(:statement_id=>statement.id, :schoolkid_id=>schoolkid.id, :mark => s_s[schoolkid.id.to_s][statement.id.to_s])
+          else
+            SchoolkidStatement.where(:statement_id=>statement.id).first.delete
+          end
+        else
+          if s_s[schoolkid.id.to_s][statement.id.to_s] != ""
+            schoolkid_statement = SchoolkidStatement.create(:statement_id=>statement.id, :schoolkid_id=>schoolkid.id, :mark=>s_s[schoolkid.id.to_s][statement.id.to_s])           end
+        end
+      end              
+    end
+    redirect_to mark_group_path(@group)
+  end
+
+  def pres
+    @group = Group.includes(:statements, :schoolkids).find( params[:id] )
+  end
+ 
+  def create_pres
+   s_s=params[:schoolkid_statements]
+   @group=Group.includes(:schoolkids,{:statements=>:schoolkid_statements}).find(params[:id])
+   @group.schoolkids.each do |schoolkid| 
+     @group.statements.each do |statement|
+       schoolkid_statement=statement.schoolkid_statements.detect{|ss| ss.schoolkid_id==schoolkid.id}
+       if schoolkid_statement
+         schoolkid_statement.update_attributes(:pres => s_s[schoolkid.id.to_s] && s_s[schoolkid.id.to_s][statement.id.to_s].present?)
+       else
+         schoolkid_statement=SchoolkidStatement.create(:statement_id=>statement.id,:schoolkid_id=>schoolkid.id,:pres=>s_s[schoolkid.id.to_s] && s_s[schoolkid.id.to_s][statement.id.to_s].present?)
+         p schoolkid_statement.errors
+       end
+     end
+   end
+   redirect_to pres_group_path(@group)
+  end
+
+  def set_data
+    if !params[:id].blank?
+      @group = Group.includes(:statements).find( params[:id] )
+    end
+  end
+
+  def index
+    @groups = Group.find_by_year(session[:choice_year].to_i).page(params[:page])
+  end
+
+  def show
+    @group = @gr = Group.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @group }
+    end
+  end
+
+  def new
+    @group = Group.new
+    @school_group = SchoolGroup.where(:year => session[:choice_year].to_i)
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @group }
+    end
+  end
+
+  def edit
+    @group = Group.find(params[:id])
+    @school_group = SchoolGroup.where(:year => session[:choice_year].to_i)
+  end
+
+  def create
+    @group = Group.new(params[:group])
+    respond_to do |format|
+      if @group.save
+        format.html { redirect_to(@group, :notice => 'Group was successfully created.') }
+        format.xml  { render :xml => @group, :status => :created, :location => @group }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    
+    respond_to do |format|
+      if @group.update_attributes(params[:group])
+        format.html { redirect_to(@group, :notice => 'Group was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(groups_url) }
+      format.xml  { head :ok }
+    end
+  end
+end

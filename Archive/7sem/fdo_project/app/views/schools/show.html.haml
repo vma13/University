@@ -1,0 +1,33 @@
+%h1="Школа №#{@school.number}"
+.film
+  .col
+    %dt Директор:
+    %dt="#{@school.director_sername.to_s+" "+@school.director_name.to_s+" "+@school.director_pathname}"
+    %dt=School.human_attribute_name(:telephone)
+    %dt=@school.telephone
+  .clear
+
+-if !@school.school_groups.blank?
+  %h2 Классы
+  -i = 1
+  %table
+    %thead
+      %tr
+        %th №
+        %th=SchoolGroup.human_attribute_name('number')
+        %th=SchoolGroup.human_attribute_name('year')
+    %tbody
+      -@school.school_groups.each do |sgroup|
+        %tr
+          %td=i
+          %td= link_to sgroup.number, sgroup
+          %td= link_to sgroup.year, sgroup
+        -i += 1
+
+%br
+=link_to "К списку школ", schools_path
+-if @current_user && @current_user.admin?
+  \|
+  =link_to "Редактировать",edit_school_path(@school)
+  \|
+  =link_to "Удалить", @school,:confirm => "Вы уверены?",:method => :delete

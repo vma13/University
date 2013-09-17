@@ -1,0 +1,27 @@
+"
+<form name = 'registration' method = 'post' action = 'aero.rb'>
+  <table class = 'list'>
+    <tbody>
+      <tr>
+        <th>Пользовательское имя:</th>
+        <td><input type = 'text' name = 'user' value = ''></td>
+      </tr>
+      <tr>
+        <th>Пароль:</th>
+        <td><input type = 'password' name = 'password' value = ''></td>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <td><input type = 'text' name = 'mail' value = ''></td>
+      </tr>
+      <tr>
+        <th>Дополнительная информация:</th>
+        <td><input type = 'text' name = 'info' value = ''></td>
+      </tr>
+      <tr>
+        <th colspan = '2'><input type = 'submit' value = 'registration'></th>
+      </tr>
+    </tbody>
+  </table>
+</form>
+"

@@ -1,0 +1,14 @@
+%h1=Discipline.where(:id => @course.discipline_id).first.full_name
+
+%p
+  %b="#{Course.human_attribute_name(:start_date)}:"
+  = @course.start_date.strftime("%d.%m.%Y")
+  %br
+  %b="#{Course.human_attribute_name(:finish_date)}:"
+  = @course.finish_date.strftime("%d.%m.%Y")
+  %br
+-if @current_user && @current_user.admin?
+  = link_to 'Редактировать', edit_course_path(@course)
+  \|
+= link_to 'Назад', courses_path
+

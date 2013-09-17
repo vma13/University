@@ -1,0 +1,40 @@
+= link_to image_tag("/assets/images/prev.png", :size => "32x32", :title => "Назад"), @course
+\|
+= link_to image_tag("/assets/images/list.png", :size => "32x32", :title => "К списку курсов"), courses_path
+%table{:id => 'no-border'}
+  %tr
+    %td
+      %h2 Входящие в состав
+      %table{:id=>'leftTable'}
+        %tr
+          %td
+            %input{:type=>"checkbox", :onclick=>"check_all('leftTable')", :name=>"not_use"}
+            Выделить все
+        - @school_group.each do |s|
+          %tr
+            %td
+              %input{:type=>"checkbox", :value=>s.id} 
+              =s.number
+    %td
+      = button_to_function '<--', "move_value('rightTable', 'leftTable')", :class=>'button'
+      %br
+      = button_to_function '-->', "move_value('leftTable', 'rightTable')", :class=>'button'
+      %br
+      = button_to 'Сохранить',"#", :id=>'move_data'
+      %td
+
+.rightTableSelect
+  %h2 Не входящие в состав
+  %table{:id=>'rightTable'}
+    %tr
+      %td
+        %input{:type=>"checkbox", :onclick=>"check_all('rightTable')", :name=>"not_use"}
+          Выделить все
+    - @course.school_groups.each do |group|
+      %tr
+        %td
+          %input{:type=>"checkbox", :value=>group.id} 
+            =group.number
+
+.field
+  = hidden_field_tag "group_id", @course.id

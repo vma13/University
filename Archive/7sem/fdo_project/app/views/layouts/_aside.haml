@@ -1,0 +1,4 @@
+#aside.box
+  %ul.box
+    -Discipline.all.each do |dis|
+      %li{:id=>dis==@dis ? "submenu-active" : nil}=link_to dis.full_name, dis

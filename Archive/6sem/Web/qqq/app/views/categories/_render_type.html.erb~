@@ -1,0 +1,2 @@
+<% types = Category.all%>
+<%= types[0].name %>

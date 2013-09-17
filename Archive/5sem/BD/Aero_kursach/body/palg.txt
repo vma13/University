@@ -1,0 +1,5 @@
+A - массив
+MIN = A[0];
+For i = 0 To A.Length()
+    IF A[i] < MIN THEN MIN = A[i]
+End

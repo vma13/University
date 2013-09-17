@@ -1,0 +1,48 @@
+p.red{
+	color:#CC0000; <!--цвет шрифта, красый-->
+	background:#9999CC;<!--цвет фона-->
+	word-spacing:20px;<!--промежуток между строк-->
+}
+h1.h1{
+font-size:64px;
+	text-align:center; 
+	white-space:nowrap;
+}
+
+div.bold,span.bold{
+	font-weight:bold;
+}
+
+td.hour{
+	font-size: 24pt;
+}
+
+table.border, table.border td{
+	border:1px #000 solid;
+	border-collapse:collapse;
+}
+table.border,th{
+	text-align:center;
+	background:#9c9c9c  ;
+	color:#FFF;
+	font-weight:bold;
+}
+
+td.black{
+	background:black;
+}
+
+table.border td.hour{
+	font-size:36px;
+	vertical-align:center;
+}
+table.black {
+	background:black;
+	
+}
+
+thead{
+	color:fff;
+}
+
+

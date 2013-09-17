@@ -1,0 +1,16 @@
+-if @group.blank?
+  = form_tag set_data_groups_path, :method => 'get' do
+    .field
+      =select ("", "id", Group.all.map{|g| [g.number, g.id]})
+    =submit_tag "Перейти к ведомости"
+
+-unless @group.blank?
+  = hidden_field :group_id, @group.id 
+  %br
+  %h2= link_to 'Успеваемость', mark_group_path(@group)
+  %br
+  %h2= link_to 'Посещаемость', pres_group_path(@group)
+  %br 
+  = link_to 'Перейти к группам', groups_path
+  
+  

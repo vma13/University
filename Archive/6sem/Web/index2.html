@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<title>Orbit Demo</title>
+<style type="text/css">
+
+#featured { 
+width: 940px;
+height: 450px;
+background: #000 url('orbit/loading.gif') no-repeat center center;
+overflow: hidden; }
+#featured img,  
+#featured div { display: none; }
+</style>
+<link rel="stylesheet" href="orbit.css">	
+
+<!-- Attach necessary scripts -->
+<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="jquery.orbit.min.js"></script>
+<!-- Run the plugin -->
+<script type="text/javascript">
+$(window).load(function() {
+ $('#featured').orbit();
+});
+</script>
+</head>
+<body>
+<div id="featured"> 
+<div class="content" style="width: 940px; height: 450px;">
+</div>
+ <img src="Yamaha_XJR1300.jpg" alt="Test Picture #1" style="width: 940px; height: 450px;" />
+ <img src="Screenshot.png"  alt="Test Picture #2" data-caption="#htmlCaption" data-thumb="captions-thumb.jpg" style="width: 940px; height: 450px;" />
+ <!--<img src="features.jpg" alt="and more features" style="width: 940px; height: 450px;" />-->
+</div>
+<span class="orbit-caption" id="htmlCaption"><strong>I'm A Badass Caption:</strong> I can haz <a href="#">links</a>, <em>style</em> or anything that is valid markup :)</span>
+<form action = "/upload" method = "post" enctype = "multipart/form-data"/>
+<input type = "file" name = "Input Photo" />
+</form>
+
+</body>
+</html>

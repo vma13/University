@@ -1,0 +1,24 @@
+﻿rails g scaffold cources start_date:datetime finish_date:datetime 
+discipline_id:integer created_at:datetime updated_at:datetime
+
+rails g scaffold disciplines full_name:string short_name:string
+created_at:datetime updated_at:datetime
+
+rails g scaffold groups number:string course_id:integer
+year:integer gtype:boolean created_at:datetime updated_at:datetime
+
+rails g scaffold school_groups number:string year:integer
+school_id:integer stype:boolean created_at:datetime 
+updated_at:datetime
+
+rails g scaffold schoolkids first_name:string second_name:string
+last_name:string birthday:datetime male:boolean addres:string 
+telephone:string school_group_id:integer group_id:integer
+created_at:datetime updated_at:datetime
+
+rails g scaffold schoolkids_group schoolkid_id: integer 
+group:integer created_at:datetime updated_at:datetime
+
+rails g scaffold schools number:string director_name:string
+director_surname:string director_pathname:string 
+telephone:string created_at:datetime updated_at:datetime

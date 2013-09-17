@@ -1,0 +1,47 @@
+:javascript 
+  $(function() {
+    $( "#accordion" ).accordion({
+      autoHeight: false,
+      navigation: true
+    });
+  });
+  
+%br
+-unless @groups.blank?
+  .div{:id => 'accordion'}
+    - @groups.each do |group|
+      %h3=link_to group.number, group.number
+      .div{:id => group.id.to_s}
+        %table
+          %thead
+            %tr
+              %th №  
+              %th ФИО              
+              %th 
+              %th
+              %th #{Group.human_attribute_name(:control)}: 
+              -if @current_user && ( @current_user.admin? || @current_user.regular? )
+                %th= link_to image_tag("/assets/images/edit_group.png", :size => "32x32", :title => "Редактировать группу"), edit_group_path(group)
+                %th= link_to image_tag("/assets/images/delete_group.png", :size => "32x32", :title => "Удалить группу"), group, :confirm => 'Вы уверены?', :method => :delete
+              %th= link_to image_tag("/assets/images/mark.png", :size => "32x32", :title => "Успеваемость группы"), mark_group_path(group.id)
+              %th= link_to image_tag("/assets/images/fdp.png", :size => "32x32", :title => "Cгенерировать PDF версию успеваемости группы"), stat_group_path(group.id,:type => 1, :format => :pdf) 
+              %th= link_to image_tag("/assets/images/presence.png", :size => "32x32", :title => "Посещаемость группы"), pres_group_path(group.id)  
+              %th= link_to image_tag("/assets/images/fdp.png", :size => "32x32", :title => "Cгенерировать PDF версию посещаемости группы"), stat_group_path(group.id, :type => 0, :format => :pdf) 
+              %th= link_to image_tag("/assets/images/res.png", :size => "32x32", :title => "Итоговая аттестационная ведомость группы"), res_group_path(group)         
+              %th= link_to image_tag("/assets/images/fdp.png", :size => "32x32", :title => "Cгенерировать PDF версию посещаемости группы"), stat_group_path(group.id, :type => 0, :format => :pdf) 
+          %tbody
+            - i = 1
+            - group.schoolkids.each do |schoolkid|
+              %tr
+                %td= i
+                %td=link_to schoolkid.fio, schoolkid
+                -if @current_user && ( @current_user.admin? || @current_user.regular? )
+                  %td= link_to image_tag("/assets/images/edit.png", :size => "32x32", :title => "Редактировать"), edit_schoolkid_path(schoolkid)
+                  %td= link_to image_tag("/assets/images/delete.png", :size => "32x32", :title => "Удалить"), schoolkid, :confirm => 'Вы уверены?', :method => :delete
+                - i += 1
+%br                
+-if @current_user && ( @current_user.admin? || @current_user.regular? )
+  = link_to image_tag("/assets/images/add.png", :size => "32x32", :title => "Cоздать группу"), new_group_path                
+
+
+        

@@ -1,0 +1,25 @@
+= form_tag create_mark_group_path(@group) do
+  %br
+  %table
+    %thead
+      %tr
+        %th
+        %th Школьник   л.р. с.р. к.р. полугодие год
+        -@group.statements.where('date < ?', Time.now.to_date).each do |statement|        
+          %th=statement.date.strftime("%d.%m.%Y")
+    %tbody
+      -@group.schoolkids.each_with_index do |schoolkid,i|
+        %tr
+          %td= i+1
+          %td=link_to schoolkid.fio, schoolkid
+          -@group.statements.each do |statement|       
+            -mark=schoolkid.schoolkid_statements.detect{|s| s.statement_id == statement.id}
+            %td=text_field_tag "schoolkid_statements[#{schoolkid.id}][#{statement.id}]", mark.try(:mark), :size => 1, :in => 1..5 
+        
+  %br
+  = submit_tag "Сохранить изменения"
+  %br
+  %br
+  = link_to image_tag("/assets/images/pdf.png", :size => "32x32", :title => "сгенерировать PDF"), stat_group_path(:type => 1, :format => :pdf) 
+  \|
+  = link_to image_tag("/assets/images/list.png", :size => "32x32", :title => "К списку групп"), groups_path

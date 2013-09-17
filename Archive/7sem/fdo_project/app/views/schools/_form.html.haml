@@ -1,0 +1,35 @@
+= form_for @school do |f|
+  -if @school.errors.any?
+    .div.error
+      %h2 При сохранении произошли ошибки
+      %ul
+        -@school.errors.full_messages.each do |msg|
+          %li=msg
+  .field
+    = f.label :number
+    %br
+    = f.text_field :number
+  .field
+    =f.label :director_name
+    %br
+    =f.text_field :director_name
+  .field
+    =f.label :director_sername
+    %br
+    =f.text_field :director_sername
+  .field
+    =f.label :director_pathname
+    %br
+    =f.text_field :director_pathname
+  .field
+    =f.label :telephone
+    %br
+    =f.text_field :telephone   
+  .fields
+    %h4 Классы
+    =f.fields_for :school_groups do |builder|
+      =render 'school_group_fields', :f => builder
+    .field      
+      = link_to_add_fields "Добавить класс", f, :school_groups 
+  .actions
+    = f.submit 'Сохранить'

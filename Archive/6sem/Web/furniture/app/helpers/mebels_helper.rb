@@ -1,0 +1,2 @@
+module MebelsHelper
+end

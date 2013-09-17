@@ -1,0 +1,51 @@
+=form_for @schoolkid,:html=>{:multipart=>true} do |f|
+  -if @schoolkid.errors.any?
+    .div.error
+      %h2 При сохранении произошли ошибки
+      %ul
+        -@schoolkid.errors.full_messages.each do |msg|
+          %li=msg
+
+  
+  .field
+    = f.label :second_name
+    %br
+    = f.text_field :second_name
+  .field
+    = f.label :first_name
+    %br
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    %br
+    = f.text_field :last_name
+  .field
+    = f.label :birthday
+    %br
+    =f.text_field :birthday, :size => 10
+  .field
+    = f.label :male
+    %br
+    = f.radio_button :male,"1",:checked=>@schoolkid.male?
+    "Мужской"
+    %br
+    = f.radio_button :male,"0",:checked=>!@schoolkid.male?
+    "Женский"
+  .field
+    = f.label :telephone
+    %br
+    = f.text_field :telephone
+  .field
+    = f.label :school_group_id
+    %br
+    =f.text_field :school_group_tokens,"data-pre"=>SchoolGroup.where(:id => @schoolkid.school_group_id).map(&:attributes).to_json
+  /.field
+  /  =f.select :group_id, Group.all.map{|p| [ p.number, p.id ] } 
+  .fields
+    %h4 Группы
+    = f.fields_for :groups do |builder|
+      =render 'group_fields', :f => builder
+    .field
+      /= link_to_add_fields image_tag("/assets/images/add_class.png", :size => "32x32", :title => "Добавить группу"), f, :groups 
+  .actions
+    = f.submit 'Сохранить'

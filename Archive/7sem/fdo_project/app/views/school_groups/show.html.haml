@@ -1,0 +1,32 @@
+%h1="Класс №#{@school_group.number}"
+.film
+  .col
+    %dt=SchoolGroup.human_attribute_name(:year) 
+    %dt=@school_group.year
+    %dt=SchoolGroup.human_attribute_name(:stype)
+    %dt=@school_group.school_group_type?    
+  .clear
+
+-if !@school_group.schoolkids.blank?
+  %h2 Школьники
+  -i = 1
+  %table
+    %thead
+      %tr
+        %th №
+        %th=Schoolkid.human_attribute_name('second_name')
+        %th=Schoolkid.human_attribute_name('first_name')
+        %th=Schoolkid.human_attribute_name('last_name')
+    %tbody
+      -@school_group.schoolkids.each do |kid|
+        %tr
+          %td=i
+          %td= link_to kid.second_name, kid
+          %td= link_to kid.first_name, kid
+          %td= link_to kid.last_name, kid
+        -i += 1
+%br
+-if @current_user && @current_user.admin?
+  = link_to 'Редактировать', edit_school_group_path(@sgroup)
+  \|
+= link_to 'Назад', school_groups_path

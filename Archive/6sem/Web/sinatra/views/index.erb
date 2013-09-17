@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+<TITLE> Sinatra </TITLE>
+<LINK rel="stylesheet" type="text/css" href="./main.css">
+<META name = "description" charset = "UTF-8"/>
+<BODY>
+
+  <form action="/Scores" method="post">
+    <table>
+      <thead>
+        <tr>
+          <td>Commands</td>
+          <% @teams.each do |team|%>
+          <td><%=team%></td>
+          <%end%>
+        </tr>
+      </thead>
+      <tbody>
+        <%@teams.each_with_index do |team,i|%>
+        <tr>
+          <td><%=team%></td>
+          <%@teams.each_with_index do |t,j|%>
+          <%if i==j %>
+          <td class="fill"></td>
+          <%elsif i>j%>
+          <td></td>
+          <%else%>
+          <td>
+            <input name="score[<%=i+j%>][home_id]" value="<%=i%>" type="hidden"/>
+            <input name="score[<%=i+j%>][guest_id]" value="<%=j%>" type="hidden"/>
+            <input type="text" size="1" name="score[<%=i+j%>][home_goals]"/>
+            <input type="text" size="1" name="score[<%=i+j%>][guest_goals]"/>
+          </td>
+          <%end%>
+          <%end%>
+          <%end%>
+        </tr>
+      </tbody>
+    </table>
+    <input type = "submit" value = "Сохранить"/>
+  </form>
+</BODY>

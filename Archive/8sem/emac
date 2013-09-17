@@ -1,0 +1,65 @@
+;; Red Hat Linux default .emacs initialization file  ; -*- mode: emacs-lisp -*-
+
+;; Set up the keyboard so the delete key on both the regular keyboard
+;; and the keypad delete the character under the cursor and to the right
+;; under X, instead of the default, backspace behavior.
+(global-set-key [delete] 'delete-char)
+(global-set-key [kp-delete] 'delete-char)
+
+;; Non standart operations
+;;(global-set-key [home] 'beginning-of-buffer)
+;;(global-set-key [end] 'end-of-buffer)
+
+;; turn on font-lock mode
+(global-font-lock-mode t)
+;; enable visual feedback on selections
+(setq-default transient-mark-mode t)
+
+;; always end a file with a newline
+(setq require-final-newline t)
+
+;; stop at the end of the file, not just add lines
+(setq next-line-add-newlines nil)
+
+(when window-system
+  ;; enable wheelmouse support by default
+  (mwheel-install)
+  ;; use extended compound-text coding for X clipboard
+  (set-selection-coding-system 'compound-text-with-extensions))
+
+;; Uncomment next two line if you want to use dictionary 
+;;(setq default-enable-multibyte-characters nil)
+;;(set-language-environment "Cyrillic-KOI8")
+;;(load "dict")
+
+;; Uncomment next line if you want to use utf-8 buffer
+;; (setq file-coding-system-alist '(("" . utf-8) ))
+
+;;(load "nice-autoinsert")
+
+(pc-selection-mode)
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(auto-save-default nil)
+ '(auto-save-interval 0)
+ '(case-fold-search t)
+ '(column-number-mode t)
+ '(cua-mode t nil (cua-base))
+ '(delete-selection-mode t nil (delsel))
+ '(display-time-mode t)
+ '(inhibit-startup-screen t)
+ '(mail-use-rfc822 t)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil nil (tool-bar))
+ '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:stipple nil :background "#000000" :foreground "#FFFFFF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 125 :width normal :family "misc-fixed")))))
+

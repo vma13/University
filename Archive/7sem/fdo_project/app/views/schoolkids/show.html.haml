@@ -1,0 +1,17 @@
+%p
+  %b="#{Schoolkid.human_attribute_name('second_name')}:"
+  = @schoolkid.second_name
+  %br
+  %b="#{Schoolkid.human_attribute_name('first_name')}:"
+  = @schoolkid.first_name
+  %br
+  %b="#{Schoolkid.human_attribute_name('last_name')}:"
+  = @schoolkid.last_name
+  %br
+  %b="#{Schoolkid.human_attribute_name('school_group_id')}:"
+  = SchoolGroup.where(:id => @schoolkid.school_group_id).first.number
+  %br  
+  -if @current_user && @current_user.admin?
+    = link_to 'Редактировать', edit_schoolkid_path(@schoolkid)
+    \|
+  = link_to 'Назад', schoolkids_path

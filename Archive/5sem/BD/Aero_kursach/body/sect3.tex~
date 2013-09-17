@@ -1,0 +1,115 @@
+\section{Индивидуальное задание}
+\emph{Постановка задачи}. Полностью реализовать модель "Авиабилет". Данная модель должна содержать следующие пункты: 
+\begin{itemize}
+\item Реализовать контроллер для работы с данной моделью.\\
+\item Реализовать регистрацию на рейс - при регистрации по номеру паспорта и рейсу автоматически формируется посадочный талон. (Создать модель посадочного талона и необходимый контроллер, талон привязан к рейсу и авиабилету и содержит номер ряда и номер места в ряду. Считаем, что во всех самолетах 20 рядов по 6 мест в каждом ряду (a,b,c,d,e,f) места выдаются по порядку. Когда места кончаются, зарегистрироваться больше нельзя).\\
+\item Реализовать удобный просмотр занятых мест для рейса.\\
+\end{itemize}
+\subsection{Примеры работы}
+
+Добавляем новое отношение ticket, со следующими атрибутами (id, flight\_id, passport). Создание таблицы будет осуществлятся следующим методом: 
+\begin{verbatim}
+ def Ticket.create_table(connection)
+    begin
+      connection.do("
+CREATE TABLE tickets(
+  id serial PRIMARY KEY,
+  flight_id integer REFERENCES flights(id) NOT NULL,
+  passport varchar(20) NOT NULL
+) WITH OIDS
+        ")
+
+\end{verbatim}
+Опрелим конструктор и 2 метода, возвращающие рейс на который приобретен билет и талон данного билета: 
+\begin{verbatim}
+  def flight(connection)
+    Flight.find_first(connection, @attributes[:flight_id])
+  end
+
+    def coupon(connection)
+    Coupon.find_by(connection, 'ticket_id', @attributes[:id])
+  end
+\end{verbatim}
+
+добавим представление для данного отношения:
+\begin{verbatim}
+ <caption>Приобритение авиабилета на рейс #{@flight[:code]}:</caption>
+  <thead>
+  <tbody>
+    <tr>
+      <th>
+        Вылет<br>
+        <div style = 'margin-left: 10px;'>город:</div>
+        <div style = 'margin-left: 10px;'>время:</div>
+        <div style = 'margin-left: 10px;'>аэропорт:</div>
+      </th>
+      <td>
+        &nbsp;<br>
+        #{@flight[:departure_place]}<br>
+        #{@flight[:departure_date]}<br>
+        #{@flight[:departure_airport]}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Посадка<br>
+        <div style = 'margin-left: 10px;'>город:</div>
+        <div style = 'margin-left: 10px;'>время:</div>
+        <div style = 'margin-left: 10px;'>аэропорт:</div>
+      </th>
+      <td>
+        &nbsp;<br>
+        #{@flight[:arrival_place]}<br>
+        #{@flight[:arrival_date]}<br>
+        #{@flight[:arrival_airport]}
+      </td>
+    </tr>
+    <tr>
+      <th>Авиакомпания:</th>
+      <td>#{@flight.company_name()}</td>
+    </tr>
+    <tr>
+      <th>Рейс является:</th>
+      <td>#{@flight[:is_departure] ? 'отлетающим' : 'прибывающим'}</td>
+    </tr>
+    <tr>
+      <th>Ряд:</th>
+      <td>#{@row}</td>
+    </tr>
+    <tr>
+      <th>Место:</th>
+      <td>#{@seat.upcase}</td>
+    </tr>
+    <tr>
+      <th>Номер паспорта:</th>
+      <td><input type = 'text' name = 'item[passport]' size = '30'></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th colspan = '2'>
+        <input type = 'submit' value = 'Приобрести авиабилет'>
+        <input type = 'button' value = 'Назад, к списку мест'
+               onclick = 'javascript:document.location=\"aero.rb?controller=Tickets&action=index&flight_id=#{@flight[:id]}\"'>
+      </th>
+    </tr>
+  </tfoot>
+</table>
+\end{verbatim}
+В данном представлении описывается добавление билета.
+
+\section{Примеры работы}
+
+
+\includegraphics[scale=0.35]{sc1.png}
+Общий список рейсов 
+\includegraphics[scale=0.35]{sc2.png}
+Список билетов
+\includegraphics[scale=0.35]{sc3.png}
+Забронированный билет
+\includegraphics[scale=0.35]{sc4.png}
+Шаблон бронировки билета
+
+
+
+

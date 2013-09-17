@@ -1,0 +1,20 @@
+= form_tag mark_group_path, :method => 'get' do
+  %br
+  %table
+    %thead
+      %tr
+        %th Школьник
+        -@group.statements.each do |statement|
+          %th=statement.date.strftime("%d.%m.%Y")
+
+    %tbody
+      -@group.schoolkids.each do |schoolkid|
+        %tr
+          %td=schoolkid.fio
+          -@group.schoolkids.each do |schoolkid|
+            -schoolkid.schoolkid_statements.each do |schoolkid_statement|
+              %td= text_field_tag :mark, nil,:size => 1
+  %br
+  //= hidden_field :group_id, :value => @group.id
+  %br
+  = submit_tag "Сохранить изменения"

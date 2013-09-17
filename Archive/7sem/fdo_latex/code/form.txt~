@@ -1,0 +1,23 @@
+= form_for @album, :html=>{:multipart=>true} do |f|
+  -if @album.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@album.errors.count, "error")} prohibited this album from being saved:"
+      %ul
+        - @album.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name, 'Название альбома'
+    = f.text_field :name
+  .field
+    =f.label :person_tokens, "Альбом для персоны"
+    %br
+    =f.text_field :person_tokens,"data-pre"=>@album.person.to_a.map(&:attributes).to_json
+  .field
+    =f.label :film_tokens, "Альбом для фильма"
+    %br
+    =f.text_field :film_tokens,"data-pre"=>@album.film.to_a.map(&:attributes).to_json
+  .field
+    = f.label :cover, "Обложка"
+    = f.file_field :cover
+  .actions
+    = f.submit 'Сохранить'

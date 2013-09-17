@@ -1,0 +1,29 @@
+<h1>Listing f_sbjs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Producer</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @f_sbjs.each do |f_sbj| %>
+  <tr>
+    <td><%= f_sbj.name %></td>
+    <% category = Category.find(f_sbj.category_id) %>
+    <% producer = Producer.find(f_sbj.producer_id) %>
+    <td><%= link_to category.name, category_path(category) %></td>
+    <td><%= producer.name %></td>
+    <td><%= link_to 'Show', f_sbj %></td>
+    <td><%= link_to 'Edit', edit_f_sbj_path(f_sbj) %></td>
+    <td><%= link_to 'Destroy', f_sbj, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New F sbj', new_f_sbj_path %>

@@ -1,0 +1,36 @@
+%h1 Поиск
+= form_tag search_schoolkids_path, :method => 'get' do
+  =Schoolkid.human_attribute_name('second_name')
+  %br
+  = text_field_tag :second_name, params[:sname]
+  %br
+  =Schoolkid.human_attribute_name('first_name')
+  %br
+  = text_field_tag :first_name, params[:fname]
+  %br
+  =Schoolkid.human_attribute_name('last_name')
+  %br
+  = text_field_tag :last_name, params[:lname]
+  %br
+  %br
+  =submit_tag "Поиск"
+
+%br
+-if !@search.blank?
+  %h1 Результаты поиска
+  %br
+  %table
+    %thead
+      %tr
+        %th=Schoolkid.human_attribute_name('second_name')
+        %th=Schoolkid.human_attribute_name('first_name')
+        %th=Schoolkid.human_attribute_name('last_name')
+    %tbody
+      - @search.each do |schoolkid|
+        %tr         
+          %td=link_to schoolkid.second_name, schoolkid
+          %td=link_to schoolkid.first_name, schoolkid
+          %td=link_to schoolkid.last_name, schoolkid
+
+%br
+= link_to image_tag("/assets/images/list.png", :size => "64x64", :title => "К списку школьников"), schoolkids_path

@@ -1,0 +1,10 @@
+$dvi_previewer = 'start xdvi.bin -bg white -expert -noghostscript -paper A5 -s 5';
+$dvi_update_method = 2;
+
+$dvips = 'dvips -K -tA4';
+
+$pdf_previewer = 'start xpdf -title Autoupdated:main.pdf -z page -g 770x1100';
+$pdf_update_method = 2;
+
+#$pdf_previewer = 'start acroread';
+#$pdf_update_method = 0;

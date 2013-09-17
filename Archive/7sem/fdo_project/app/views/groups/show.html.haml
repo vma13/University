@@ -1,0 +1,21 @@
+%p
+  %b="#{Group.human_attribute_name(:number)}:"
+  =@group.number
+  %br
+  %b="#{Group.human_attribute_name(:course_id)}:"
+  -c = Course.where(:id => @group.course_id).first
+  =Discipline.where(:id => c.discipline_id).first.full_name
+  %br
+  %b Продолжительность
+  =c.start_date.strftime("%m.%d.%y").to_s + " - " + c.finish_date.strftime("%m.%d.%y").to_s
+  %br
+  %b="#{Group.human_attribute_name(:year)}:"
+  = @group.year
+  %br
+  %b="#{Group.human_attribute_name(:gtype)}:"
+  = @group.group_type?
+
+-if @current_user && @current_user.admin?
+  = link_to 'Редактировать', edit_group_path(@group)
+  \|
+= link_to 'Назад', groups_path

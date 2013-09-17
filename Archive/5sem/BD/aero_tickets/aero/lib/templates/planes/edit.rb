@@ -1,0 +1,52 @@
+"
+<form name = 'aero' action = 'aero.rb' method = 'post'>
+<input type = 'hidden' name = 'controller' value = 'Planes'>
+<input type = 'hidden' name = 'action' value = 'edit'>
+<input type = 'hidden' name = 'is_commit' value = 'true'>
+<input type = 'hidden' name = 'item[id]' value = '#{@item[:id]}'>
+<table class = 'list'>
+  <caption>
+    #{@header}<br>
+    <span style = 'color: Red;'>#{@message}</span>
+  </caption>
+  <thead>
+  <tbody>
+    <tr>
+      <th>№ Самолета:</th>
+      <td><input type = 'integer' name = 'item[id]' value = '#{@item[:id]}'></td>
+    </tr>
+    <tr>
+      <th>
+        Марка<br>
+        <td><input type = 'text' name = 'item[mark]' value = '#{@item[:mark]}'></td>
+   
+      </th>
+    </tr>
+    <tr>
+      <th>Статус:</th>
+       <td><input type = 'text' name = 'item[status]' value = '#{@item[:status]}'></td>
+    </tr>
+    <tr>
+      <th>Общая стоимость проведенных работ:</th>
+      <td><input type = 'text' name = 'item[all_price]' value = '#{@item[:all_price]}' ></td>
+    </tr>
+    <tr>
+     <tr>
+      <th>Возраст:</th>
+      <td><input type = 'integer' name = 'item[age]' value = '#{@item[:age]}' ></td>
+    </tr>
+      <th>Компания:</th>
+       <td><input type = 'text' name = 'item[company_id]' value = '#{@item[:company_id]}'></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th colspan = '2'>
+        <input type = 'submit' value = 'Внести изменения'>
+        <input type = 'button' value = 'Назад к списку'
+               onclick = 'javascript:document.location=\"aero.rb?controller=Planes&action=list\"'>
+      </th>
+    </tr>
+  </tfoot>
+</table>
+"

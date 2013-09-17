@@ -1,0 +1,26 @@
+%h1 Список учебных групп hujhhgg
+%br
+wfhusdhfisdghfiuerfui
+%table
+  %thead
+    %tr
+      %th=Group.human_attribute_name('number')
+      %th=Group.human_attribute_name('year')
+      %th=Group.human_attribute_name('gtype')
+      -unless @groups.blank?
+        %th
+        %th
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td=link_to group.number, group
+        %td=link_to group.year, group
+        %td=link_to group.group_type?, group
+        %td= link_to 'Редактировать', edit_group_path(group)
+        %td= link_to 'Удалить', group, :confirm => 'Вы уверены?', :method => :delete
+
+=paginate @groups
+%br
+= link_to 'Ведомость', set_data_groups_path
+%br
+= link_to 'Создать группу', new_groups_path

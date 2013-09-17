@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @post.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @post.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @post.content %>
+</p>
+
+<h2>Комментарии</h2>
+
+<%=render :partial=> "comments/comment", :collection=>@post.comments%>
+
+<h2>Оставить комментарий</h2>
+<%=form_for([@post, @post.comments.build]) do |f|%>
+	<div class="field">
+		<%=f.label :commenter%><br>
+		<%=f.text_field :commenter%>
+	</div>
+	<div class="field">
+		<%=f.label :body%><br>
+		<%=f.text_area :body%>
+	</div>
+	<div class="actions">
+		<%=f.submit%>
+	</div>
+<%end%>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+
+<h2><%=@post.name%></h2>
+<h3>Теги</h3>
+<p><%=@post.tags.map(&:name).join(", ")%></p>

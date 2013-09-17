@@ -1,0 +1,50 @@
+= form_for @school_group do |f|
+  -if @school_group.errors.any?
+    .div.error
+      %h2 При сохранении произошли ошибки
+      %ul
+        -@school_group.errors.full_messages.each do |msg|
+          %li=msg
+
+  .field
+    = f.label :number
+    %br
+    = f.text_field :number
+  .field
+    = f.label :school_id
+    %br
+    =f.select :school_id, School.all.map{|s| [s.number, s.id]}
+  .field
+    =f.label :year
+    %br
+    =f.select(:year, (1990..Time.now.year).to_a.reverse, :selected=>(f.object.year || Time.now.year))
+  .field
+    = f.label :stype
+    %br
+    = f.radio_button :stype, "1", :checked=>@school_group.stype?
+    ФДО&nbsp
+    = f.radio_button :stype, "0", :checked=>!@school_group.stype?
+    ПШ
+    %br
+  .actions
+    = f.submit 'Сохранить'
+    
+-unless @school_group.schoolkids.blank?
+  %h2 Школьники
+  -i = 1
+  %table
+    %thead
+      %tr
+        %th №
+        %th=Schoolkid.human_attribute_name('second_name')
+        %th=Schoolkid.human_attribute_name('first_name')
+        %th=Schoolkid.human_attribute_name('last_name')
+    %tbody
+      -@school_group.schoolkids.each do |kid|
+        %tr
+          %td=i
+          %td= link_to kid.second_name, kid
+          %td= link_to kid.first_name, kid
+          %td= link_to kid.last_name, kid
+        -i += 1
+%br

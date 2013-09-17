@@ -1,0 +1,16 @@
+class ApplicationController < ActionController::Base
+include AuthenticatedSystem
+before_filter :authenticate
+protect_from_forgery
+  private
+
+  def authenticaticate
+  @current_user = current_user
+  end
+
+  def check_auth
+  redirect_to login_path unless @current_user
+  end
+  
+ 
+end

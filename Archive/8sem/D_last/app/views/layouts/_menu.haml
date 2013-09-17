@@ -1,0 +1,12 @@
+#menu.box
+  %ul.box    
+    -if @current_user           
+      %li{:id=>controller_name=='schoolkids' ? "menu-active" : nil}=link_to content_tag(:span,"Школьники"),schoolkids_path
+      %li{:id=>controller_name=='groups' ? "menu-active" : nil}=link_to content_tag(:span,"Учебные группы"), groups_path   
+      -if @current_user && ( @current_user.admin? || @current_user.regular? )        
+        %li{:id=>controller_name=='disciplines' ? "menu-active" : nil}=link_to content_tag(:span,"Дисциплины"),disciplines_path
+        %li{:id=>controller_name=='courses' ? "menu-active" : nil}=link_to content_tag(:span,"Курсы"), courses_path
+        %li{:id=>controller_name=='schools' ? "menu-active" : nil}=link_to content_tag(:span,"Школы"), schools_path
+        %li{:id=>controller_name=='school_groups' ? "menu-active" : nil}=link_to content_tag(:span,"Классы"), school_groups_path
+        -if @current_user.admin?
+          %li{:id=>controller_name=='users' ? "menu-active" : nil}=link_to content_tag(:span,"Пользователи"), users_path 

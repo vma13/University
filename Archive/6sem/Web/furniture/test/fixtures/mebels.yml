@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  Category: MyString
+  Subject: MyString
+  Producer: MyString
+
+two:
+  Category: MyString
+  Subject: MyString
+  Producer: MyString

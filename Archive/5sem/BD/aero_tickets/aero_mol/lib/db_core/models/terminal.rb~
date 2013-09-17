@@ -1,0 +1,19 @@
+require 'db_core/models/model'
+
+class Terminal < Model
+  def Terminal.create_table(connection)
+    begin
+      connection.do("
+CREATE TABLE terminals(
+  id_flight serial PRIMARY KEY,
+  number_ticket integer UNIQUE NOT NULL,
+  number_row integer NOT NULL,
+  number_seat integer NOT NULL
+) WITH OIDS
+        ")
+      return true
+    rescue DBI::ProgrammingError => e
+      return false
+    end
+  end
+end

@@ -1,0 +1,11 @@
+!!! 5
+%html{:lang => "ru"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title= content_for?(:title) ? yield(:title) : "Система учета слушателей ФДО"
+    = csrf_meta_tags
+    = stylesheet_link_tag 'login-style'
+    /[if lte IE 6]
+      =stylesheet_link_tag 'main-ie6'
+  %body
+    = yield

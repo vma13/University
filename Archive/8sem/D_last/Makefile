@@ -1,0 +1,2 @@
+rvm reset 
+rails s

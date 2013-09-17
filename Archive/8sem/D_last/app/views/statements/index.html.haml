@@ -1,0 +1,22 @@
+%h1 Ведомость
+%table
+  %thead
+    %th Школьник
+    -@statements.each do |statement|
+      %th= statement.date
+  %tbody
+    -@schoolkids.each do |schoolkid|
+      %tr
+        %td= schoolkid.fio
+        -@statements.each do |statement|
+          %td= select( @statements.first, "value", { "1" => "1", "2" => "2", "3" => "3", "4" => "4", "5" => "5", "+" => "+", "-" => "-"})
+    //%td= link_to 'Show', statement
+    //%td= link_to 'Edit', edit_statement_path(statement)
+    //%td= link_to 'Destroy', statement, :confirm => 'Are you sure?', :method => :delete
+
+%br
+= button_to "Применить изменения", @next_user.nil? ? {} : click_url(:id => @next_user.id), :disabled => !@next_user
+
+
+= link_to 'Перейти к группам', groups_path
+

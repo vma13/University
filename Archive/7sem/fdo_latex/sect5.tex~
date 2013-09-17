@@ -1,0 +1,94 @@
+\section{Графический интерфейс}
+Приведем пример работы.\\
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.35]{image/main.png}
+\end{center}
+\newpage
+\caption{Домашняя страничка}
+\end{figure}
+\newpage
+Далее рассматривается, как будет выглядеть интерфейс просмотра классов, курсов, дисциплин, групп, учеников и школ.\\
+
+\begin{center}
+\includegraphics[scale=0.25]{image/classes.png}
+\end{center}
+
+\begin{center}
+\textbf{Таблица школьных классов слушателей ФДО}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.25]{image/cources.png}
+\end{center}
+
+\begin{center}
+\textbf{Таблица курсов слушателей ФДО}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.25]{image/disciplines.png}
+\end{center}
+
+\begin{center}
+\textbf{Таблица дисциплин слушателей ФДО}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.25]{image/groups.png}
+\end{center}
+
+\begin{center}
+\textbf{Таблица групп слушателей ФДО}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.25]{image/schoolers.png}
+\end{center}
+
+\begin{center}
+\textbf{Таблица учеников слушателей ФДО}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.25]{image/schools.png}
+\end{center}
+
+\begin{center}
+\textbf{Таблица школ}
+\end{center}
+Приведем пример добавления нового учебного класса новый альбом, для этого достаточно перейти по ссылке "Добавить". При нажатии на данную ссылку произойдет перенаправление на страничку создания учебного класса.\\
+\begin{center}
+\includegraphics[scale=0.25]{image/class_new.png}
+\end{center}
+\begin{center}
+\textbf{Добавление учебного класса}
+\end{center}
+Если просто нажать кнопку "Сохранить" то отобразится сообщение об ошибке.\\
+\begin{center}
+\includegraphics[scale=0.25]{image/class_error.png}
+\end{center}
+\begin{center}
+\textbf{Ошибка}
+\end{center}
+В данном случае продемонстрирован наглядный пример работы валидатора: название класса должно существовать, т.е. не существует класса без названия и это название должно содержать не менее 1 символа в названии. А также учебный год обязательно должен быть числом.\\
+В остальных классах реализован аналогичный интерфейс, вот иллюстрация его работы, на примере ученика.\\
+\begin{center}
+\includegraphics[scale=0.3]{image/schooler_edit.png}
+\end{center}
+\begin{center}
+\textbf{Редактирование ученика}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.3]{image/schooler_new.png}
+\end{center}
+\begin{center}
+\textbf{Создание нового ученика}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.35]{image/schooler_error.png}
+\end{center}
+\begin{center}
+\textbf{Ошибки при сохранении ученика}
+\end{center}
+\endinput

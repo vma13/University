@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>Калькулятор</title>
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<LINK rel="stylesheet" type="text/css" href="./calc.css">
+<style type="text/css"></style>
+<script type="text/javascript" src="calc.js"></script>
+
+</head>
+<body text = orange>
+<h1 align="center"><u><font color="#f0f">Калькулятор(+-*/)</font></u></h1>
+
+<table width="1237" height="353">
+<center><form action="handler.cgi" method="post">
+<table align="center" bgcolor=444444 width="194" height="344">
+<tr>
+<th colspan=4 align = center>
+<font face="verdana">Калькулятор</font><font color = orange face = verdana><b>
+<tr>
+<td align = center valign = bottom colspan = 4>
+<div class = no>dsffghsgdhfghsdfgh</div>
+</td>
+<tr>
+   <td align="center">
+     <input class="operation" type="button" value="+">
+   </td>
+   <td align="center">
+   <input class="operation" type="button" value="(-)">
+ </td>
+ <td align="center">
+    <input class="twocols" type="button" value="C/E" onClick = rid();>
+ </td>
+</tr>
+
+<tr>
+  <td align="center">
+    <input type="button" class="operation" value="/" onClick = compute("divide");>
+  </td>      
+  
+  <td align="center">
+    <input class="operation" type="button" value="*" onClick = compute("multiply");>
+  </td>
+  
+  <td align="center">
+    <input class="operation" type="button" value="-" onClick = compute("subtract");>
+  </td>      
+</tr>
+  
+<tr>
+  <td align="center">
+    <input class="input" type="button" value="1" onClick = total(1);>
+  </td>
+
+  <td align="center">
+    <input class="input" type="button" value="2" onClick = total(2);>
+  </td>
+  
+  <td align="center">
+    <input type="button" class="input" value="3" onClick = total(3);>
+  </td>
+</tr>
+
+<tr>
+  <td align="center">
+    <input class="input" type="button" value="4" onClick = total(4);>
+  </td>
+  
+  <td align="center">
+    <input class="input" type="button" value="5" onClick = total(5);>
+  </td>
+  
+  <td align="center">
+    <input class="input" type="button" value="6" onClick = total(6);>
+  </td>
+</tr>
+
+<tr>
+  <td align="center">
+    <input class="input" type="button" value="7" onClick = total(7);>
+  </td>
+      
+  <td align="center">
+	<input class="input" type="button" value="8" onClick = total(8);>
+  </td>
+  
+  <td align="center">
+    <input class="input" type="button" value="9" onClick = total(9);>
+  </td>
+</tr>
+
+<tr>
+ <td align="center">
+    <input class="input" type="button" value="." onClick = total(".");>
+  </td>
+
+  <td align="center">
+    <input class="input" type="button" value="0" onClick = total(0);>
+  </td>
+  
+ <td align="center">
+    <input class="twocols" type="button" value="=" onClick = compute("equal");>
+ </td>
+</tr>
+
+</form>
+</center>
+</td>
+</tr>
+</table>
+</br>
+</noindex>
+</body>
+</html>

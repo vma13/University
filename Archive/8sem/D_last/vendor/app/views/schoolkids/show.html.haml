@@ -1,0 +1,38 @@
+%p
+  %b="#{Schoolkid.human_attribute_name('second_name')}:"
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = @schoolkid.second_name
+  %br
+  %b="#{Schoolkid.human_attribute_name('first_name')}:"
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = @schoolkid.first_name
+  %br
+  %b="#{Schoolkid.human_attribute_name('last_name')}:"
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  = @schoolkid.last_name
+  %br
+  %b="#{Schoolkid.human_attribute_name('group')}:"
+  - g = Group.find(@schoolkid.group_id)
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = link_to g.number, g
+  %br
+  %b="#{Schoolkid.human_attribute_name('telephone')}:"
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = @schoolkid.telephone
+  %br
+  %b="#{Schoolkid.human_attribute_name('school_group_id')}:"
+  - sg = SchoolGroup.find(@schoolkid.school_group_id)
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = link_to sg.number, sg
+  %br
+  %b="#{Schoolkid.human_attribute_name('school')}:"
+  - s = School.find(sg.school_id)
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = link_to s.number, s
+  %br  
+%br
+
+-if @current_user && ( @current_user.admin? || @current_user.regular? )
+  = link_to image_tag("/assets/images/edit.png", :size => "32x32", :title => "Редактировать"), edit_schoolkid_path(@schoolkid)
+  &nbsp; | &nbsp;
+= link_to image_tag("/assets/images/prev.png", :size => "32x32", :title => "Назад"), schoolkids_path

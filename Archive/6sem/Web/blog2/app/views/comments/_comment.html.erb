@@ -1,0 +1,31 @@
+<% if logged_in? or comment.status %>
+
+<div class="filed">
+  <p>
+    <b>Автор</b>
+    <%= comment.commenter %>
+  </p>
+</div>
+
+<div class="filed">
+  <p>
+    <b>Текст коментария</b>
+    <%= comment.body %>
+  </p>
+</div>
+
+<% end %>
+
+<% if logged_in? %>
+
+<div class="filed">
+  <p>
+    <b>Статус</b>
+    <%= comment.status ? 'Одобрен' : 'Не одобрен' %>
+  </p>
+</div>
+<%if !comment.status %>
+	<%= link_to 'Одобрить', edit_post_comment_path(comment.post, comment) %><br />
+<% end %>
+<%= link_to 'Удалить комментарий', post_comment_path(comment.post, comment), :method => :delete, :confirm => 'Вы уверены?' %>
+<% end %>

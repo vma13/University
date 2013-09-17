@@ -1,0 +1,21 @@
+%h1 Список школ
+
+%table
+  %thead
+    %tr
+      %th=School.human_attribute_name(:number)
+      -if @current_user && @current_user.admin?
+        %th
+        %th
+  %tbody
+    - @schools.each do |school|
+      %tr
+        %td=link_to school.number, school
+        -if @current_user && @current_user.admin?
+          %td=link_to 'Редактировать', edit_school_path(school)
+          %td=link_to 'Удалить', school, :confirm => 'Вы уверены?', :method => :delete
+
+=paginate @schools
+%br
+-if @current_user && @current_user.admin?
+  = link_to 'Добавить школу', new_school_path

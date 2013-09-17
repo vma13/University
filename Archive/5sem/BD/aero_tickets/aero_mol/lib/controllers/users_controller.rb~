@@ -1,0 +1,22 @@
+class UsersController < Controller
+
+  def is_authorized_action?()
+    return false
+  end
+
+  def registration()
+    if @cgi.params.has_key?('is_commit')
+      params = filter_for_params()
+      if params.has_key?('login') and params['id'][0] != '' and params.has_key?('password') and params['id'][0] != ''
+        @header = 'Создание нового пользователя'
+        @message = 'Создание завершено'
+				User.add(@db, @cgi.params['user'][0], @cgi.params['password'][0], @cgi.params['mail'][0], @cgi.params['info'][0])
+			else
+				@header = 'Введите данные'
+				@message = 'Спасибо'
+      end
+    end
+    ##render_template('registration')
+  end
+
+end

@@ -1,0 +1,6 @@
+pusk: test
+	./test
+main: dbl_vector.cpp test.cpp
+	g++ dbl_vector.cpp tect.cpp -o test
+clean:
+	rm -f *.o test

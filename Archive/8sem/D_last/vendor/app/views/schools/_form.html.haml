@@ -1,0 +1,53 @@
+= form_for @school do |f|
+  -if @school.errors.any?
+    .div.error
+      %h2 При сохранении произошли ошибки
+      %ul
+        -@school.errors.full_messages.each do |msg|
+          %li=msg
+  .field
+    = f.label :number
+    %br
+    = f.text_field :number
+  .field
+    = f.label :stype
+    %br
+    =f.select :stype, options_for_select([["ПШ", 0], ["ФДО", 1]], @school.stype)
+  ФИО директора:
+  .field
+    =f.label :second_name
+    &nbsp
+    =f.text_field :second_name
+  .field
+    =f.label :first_name
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    =f.text_field :first_name
+  .field
+    =f.label :last_name
+    &nbsp
+    =f.text_field :last_name
+  Официальное ФИО директора
+  .field
+    =f.label :official_second_name
+    &nbsp
+    =f.text_field :official_second_name
+  .field
+    =f.label :official_first_name
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    =f.text_field :official_first_name
+  .field
+    =f.label :official_last_name
+    &nbsp
+    =f.text_field :official_last_name
+  .field
+    =f.label :telephone
+    %br
+    =f.text_field :telephone   
+  .fields
+    %h4 Классы
+    =f.fields_for :school_groups do |builder|
+      =render 'school_group_fields', :f => builder
+    .field      
+      = link_to_add_fields image_tag("/assets/images/add_class.png", :size => "32x32", :title => "Добавить класс"), f, :school_groups 
+  .actions
+    = f.submit 'Сохранить'

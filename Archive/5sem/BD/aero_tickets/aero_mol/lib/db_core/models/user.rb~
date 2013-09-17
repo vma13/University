@@ -1,0 +1,61 @@
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+
+class User < Model
+  def User.create_table(connection)
+    begin
+      connection.do("
+CREATE TABLE users(
+  id serial PRIMARY KEY,
+  login varchar(16) UNIQUE NOT NULL,
+  password varchar(16) NOT NULL,
+  mail text UNIQUE,
+  info text
+) WITH OIDS
+        ")
+      return true
+    rescue DBI::ProgrammingError => e
+      return false
+    end
+  end
+
+  def User.check_user(connection, login, password)
+    id = connection.select_one("
+SELECT id FROM users WHERE login = ? and password = ?
+      ", login, password)
+    return (id.size > 0)
+  end
+
+	def User.check_user_for_registration(connection, login)
+    id = connection.select_one("
+SELECT id FROM users WHERE login = ?", login)
+    return (id.size > 0)
+	end
+
+  def User.create_admin(connection)
+    connection.do("
+INSERT INTO users(login, password, mail, info)
+  VALUES('admin', 'qwerty', admin@admin.com, 'Администратор системы')
+      ")
+  end
+
+  def User.add(connection, login, password, mail, info)
+    connection.do("INSERT into users (login, password, info, mail) 
+	VALUES (?,?,?,?)", login, password, info, mail)
+  end
+  
+  def User.delete(connection, login)
+    connection.do("DELETE FROM users where login=?", login)
+  end
+  
+  def User.update_pass(connection, login, password)
+		connection.do("UPDATE users SET password = ? where login = ?", password, login)
+  end
+  
+  def User.update_mail(connection, login, mail)
+		connection.do("UPDATE users SET mail = ? where login = ?", mail, login)
+  end
+
+	
+
+end

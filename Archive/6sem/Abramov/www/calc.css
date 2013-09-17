@@ -1,0 +1,67 @@
+.operation {
+height:30;
+width:30;
+font-size:10 px;
+font-family:verdana;
+background-color:#7c7c7c;
+border:1 px dashed #red;
+color:white
+}
+
+.special {
+height:30;
+width:30;
+font-size:10 px;
+font-family:verdana;
+background-color:blue;
+border:1 px dashed #222222;
+color:white
+}
+
+.input {
+height:30;
+width:30;
+font-size:10 px;
+font-family:verdana;
+background-color:black;
+border:1 px dashed #111111;
+color:white 
+}
+
+.twocols {
+height:30;
+width:30;
+font-size:10 px;
+font-family:verdana;
+background-color:#BB0400;
+border:1 px dashed #111111;
+color:white 
+}
+
+.no {
+font-family:verdana;
+background-color:black;
+border:orange;
+color:orange; 
+}
+
+.top {
+font-weight:bold;
+font-family:verdana;
+color:orange;
+background-color:444444;
+border:0 px
+}
+
+.other {
+font-family:verdana;
+color:444444;
+background-color:black;
+border:2 px
+}
+
+.table{
+border="1"
+bordercolorlight="#800080" 
+bordercolordark="#FFA500"
+}

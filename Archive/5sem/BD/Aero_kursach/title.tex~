@@ -1,0 +1,44 @@
+\thispagestyle{empty}
+
+\vspace*{-\headheight}\vspace*{-\headsep}
+
+{\centering
+{\sc
+федеральное агентство по образованию\\
+московский государственный индустриальный университет\\
+кафедра <<информационные системы и технологии>>\\
+}
+
+
+\vspace{4cm plus 1mm minus 1mm}
+
+\begin{flushright}
+\begin{tabular}{l}
+Руководитель работы:\\
+к.ф.-м.н., доцент Е.А. Роганов
+\end{tabular}
+\end{flushright}
+
+\vspace{3cm plus 1mm minus 1mm}
+
+Орленко Николай Иванович
+
+\vspace{1cm plus 1mm minus 1mm}
+{\large\bf
+Модификация эталонного проекта <<Кирпичики>>
+
+\vspace{1cm plus 1mm minus 1mm}
+
+Курсовая работа по дисциплине\\
+<<Информатика>>\\
+1-й курс, 2-й семестр
+
+\vfill
+
+Москва 2008
+
+}
+}
+
+\newpage
+\endinput

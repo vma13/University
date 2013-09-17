@@ -1,0 +1,199 @@
+\usepackage[koi8-r]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[TS1,T2A]{fontenc}
+\usepackage[mathlit,mathrus]{newliterat}
+\settypeblocksize{240mm}{160mm}{*}
+\setulmargins{*}{*}{1}
+\setlrmargins{*}{*}{1}
+\checkandfixthelayout
+\usepackage{indentfirst}
+\tightlists
+\usepackage{graphicx}
+\usepackage{pgf,pgfarrows}
+\usepackage{amsmath,amssymb,amsfonts,amscd,amsthm}
+
+% В русскоязычных книгах и статьях знаки равенства/неравенства, сложения,
+% вычитания и умножения принято в случае переноса формулы на другую строку
+% дублировать
+\renewcommand\ne{\mathchar"3236\mathchar"303D\nobreak
+      \discretionary{}{\usefont
+      {OMS}{cmsy}{m}{n}\char"36\usefont
+      {OT1}{cmr}{m}{n}\char"3D}{}}
+\begingroup
+\catcode`\+\active\gdef+{\mathchar8235\nobreak\discretionary{}%
+ {\usefont{OT1}{cmr}{m}{n}\char43}{}}
+\catcode`\-\active\gdef-{\mathchar8704\nobreak\discretionary{}%
+ {\usefont{OMS}{cmsy}{m}{n}\char0}{}}
+\catcode`\=\active\gdef={\mathchar12349\nobreak\discretionary{}%
+ {\usefont{OT1}{cmr}{m}{n}\char61}{}}
+\endgroup
+\def\cdot{\mathchar8705\nobreak\discretionary{}%
+ {\usefont{OMS}{cmsy}{m}{n}\char1}{}}
+\def\times{\mathchar8706\nobreak\discretionary{}%
+ {\usefont{OMS}{cmsy}{m}{n}\char2}{}}
+\def\approx{\mathchar12825\nobreak\discretionary{}%
+ {\usefont{OMS}{cmsy}{m}{n}\char25}{}}
+\AtBeginDocument{%
+\mathcode`\==32768%
+\mathcode`\+=32768%
+\mathcode`\-=32768%
+}
+
+% Для переносов слов с дефисами
+\lccode`\-=`\-\defaulthyphenchar=127
+
+% Намного лучше, чем \sloppy
+\emergencystretch=2pt
+\hfuzz=0.8pt
+
+% Так обычно нумеруют рисунки и таблицы в книгах, написанных по-русски
+%\addtodef{\mainmatter}{}{%
+%\counterwithout{figure}{chapter}%
+%\counterwithout{table}{chapter}%
+%\counterwithout{figure}{section}%
+%\counterwithout{table}{section}%
+%}
+\renewcommand{\thefigure}%
+{\thesection.\arabic{figure}}
+
+\newcommand{\limp}{\Rightarrow}
+\newcommand{\leqs}{=}
+\newcommand{\lors}{\|}
+\newcommand{\lands}{\&\&}
+
+% Библиография: обычный размер!
+\makeatletter
+\renewenvironment{thebibliography}[1]{%
+  \@xp\section\@xp*\@xp{\bibname}%
+  \normalfont\labelsep .5em\relax
+  \renewcommand\theenumiv{\arabic{enumiv}}\let\p@enumiv\@empty
+  \list{\@biblabel{\theenumiv}}{\settowidth\labelwidth{\@biblabel{#1}}%
+    \leftmargin\labelwidth \advance\leftmargin\labelsep
+    \usecounter{enumiv}}%
+  \sloppy \clubpenalty\@M \widowpenalty\clubpenalty
+  \sfcode`\.=\@m
+}
+\makeatother
+
+
+% Оформление параграфов
+%\renewcommand{\thesection}{\arabic{section}}
+%\setsecnumformat{%
+%   \csname pre#1\endcsname\S\,%
+%   \csname the#1\endcsname.\quad%
+%}
+
+\addtodef{\mainmatter}{}{%
+\renewcommand{\chaptername}{Раздел}
+}
+
+% Оформление страницы
+\makepagestyle{Roganov}
+\makeevenhead{Roganov}{\normalfont\bfseries\thepage}{}{\normalfont\bfseries\leftmark}
+\makeoddhead{Roganov}{\normalfont\bfseries\rightmark}{}{\normalfont\bfseries\thepage}
+\makerunningwidth{Roganov}{\textwidth}
+\makeheadrule{Roganov}{\textwidth}{\normalrulethickness}
+\makeheadposition{Roganov}{center}{center}{}{}
+\makepsmarks{Roganov}{%
+  \let\@mkboth\markboth
+  \def\chaptermark##1{\markboth{\chaptername\ \thechapter. ##1}{\chaptername\ \thechapter. ##1}}
+  \def\sectionmark##1{\markright{%
+    \ifnum \c@secnumdepth>\z@
+      \arabic{section}. \ %
+    \fi
+    ##1}}
+}
+\pagestyle{Roganov}
+
+% Для русского языка разделителем в подписях рисунков и таблиц служит точка
+\captiondelim{ }
+%\captiondelim{.\space}
+% Используем уменьшинный шрифт для подписей
+\captionnamefont{\small}
+% Величина пробела до и после рисунков и таблиц 
+\setlength{\intextsep}{10pt}
+
+% Уменьшяем вдвое стандартное расстояние между колонками в таблицах
+\tabcolsep=.5\tabcolsep
+
+% Устраняем большие расстояния (по вертикали) в списках
+\tightlists
+
+% Длина, на которую расширяем основной текст
+\newlength\myaddwidth
+\setlength{\myaddwidth}{-58pt}
+% Половина этой длины (отступы влево и вправо)
+\newlength\myindent
+\setlength{\myindent}{0.5\myaddwidth}
+
+% Оформление оглавления
+\def\cftchapterpresnum{Раздел\space}
+%\def\cftsectionpresnum{\S\,}
+\def\cftchapteraftersnum{.}
+\def\cftsectionaftersnum{.}
+\newlength\lenA
+\renewcommand\cftchapterleader{\cftsectionleader}
+\settowidth\lenA{\textbf{Раздел V.\space}}
+\cftchapternumwidth=\lenA
+\cftbeforechapterskip=6pt
+
+% Цвет нечётных строк таблиц
+\definecolor{tblone}{cmyk}{0.00,0.08,0.00,0}
+% Цвет чётных строк таблиц
+\definecolor{tbltwo}{cmyk}{0.40,0.00,0.00,0}
+\if{
+% Цвет нечётных строк таблиц
+%\definecolor{tblone}{cmyk}{0,0,0.5,0}
+\definecolor{tblone}{HTML}{ffecf0}%{rgb}{0.757,0.916,0.945}
+% Цвет чётных строк таблиц
+%\definecolor{tbltwo}{cmyk}{0.5,0,0,0}
+\definecolor{tbltwo}{rgb}{0.9,0.95,1.0}%{rgb}{1, 1, 1}%{0.996,0.797,0.992}
+}\fi
+% Цвет строк заголовков таблиц
+\colorlet{tableheadcolor}{gray!25}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Оформление примеров
+\newcounter{exno}[section]
+\newenvironment{example}{
+\addtocounter{exno}{1}%
+\noindent{\bfseries\large Пример \arabic{section}.\arabic{exno}.\ }}
+{\par\medskip}
+
+\newcounter{taskno}[section]
+\newenvironment{task}{
+%\medskip%
+\addtocounter{taskno}{1}%
+\noindent{\bfseries\large Задача \arabic{section}.\arabic{taskno}.\ }}
+{\par\medskip}
+
+% Оформление решений
+\newenvironment{solution}{%
+\noindent{\large\bfseries Решение. }}
+{\par\medskip}
+
+
+% Оформление упражнений
+\newcounter{myenumi}
+\newenvironment{problems}%
+{%
+\medskip
+\noindent{\bfseries\large Упражнения}%\small
+\setcounter{myenumi}{0}
+\begin{list}{{\bf\themyenumi.}}{%
+\setlength{\topsep}{\baselineskip}
+\setlength{\parskip}{0pt plus 1pt}
+\setlength{\partopsep}{0pt}
+\setlength{\leftmargin}{0pt}
+\setlength{\rightmargin}{0pt}
+\setlength{\labelwidth}{0pt}
+\setlength{\labelsep}{6pt}
+\setlength{\itemindent}{6pt}
+\setlength{\parsep}{0pt plus 1pt}
+\setlength{\itemsep}{3pt plus 1pt}
+}}%
+{\end{list}
+}
+\newcommand{\prb}{\addtocounter{myenumi}{1}\item}
+

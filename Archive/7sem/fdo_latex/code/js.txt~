@@ -1,0 +1,16 @@
+$(function() {
+    $("#course_discipline_token").tokenInput("/disciplines.json", {
+	crossDomain: false,
+	propertyToSearch: "full_name",
+	resultsFormatter: function(item){ return "<li>" + item.full_name + 
+	"</li>" },
+	tokenFormatter: function(item){ return "<li><p>" + item.full_name + 
+	"</p></li>"},
+	prePopulate: $("#course_discipline_token").data("pre"),
+	theme: 'facebook',
+	hintText: 'Введите дисциплину',
+	noResultsText: 'Не найдено',
+	searchingText: "Поиск...",
+	tokenLimit: "1"
+    });
+});

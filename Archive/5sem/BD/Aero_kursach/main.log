@@ -1,0 +1,750 @@
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2010.7.23)  30 DEC 2010 16:50
+entering extended mode
+**main.tex
+(./main.tex
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
+ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
+stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
+h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur
+kish, ukrainian, nohyphenation, loaded.
+(/usr/share/texmf/tex/latex/amscls/amsart.cls
+Document Class: amsart 2004/08/06 v2.20
+\linespacing=\dimen102
+\normalparindent=\dimen103
+\normaltopskip=\skip41
+(/usr/share/texmf/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip42
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen104
+))
+(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen105
+)
+(/usr/share/texmf/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count79
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count80
+\leftroot@=\count81
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count82
+\DOTSCASE@=\count83
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen106
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count84
+\c@MaxMatrixCols=\count85
+\dotsspace@=\muskip10
+\c@parentequation=\count86
+\dspbrk@lvl=\count87
+\tag@help=\toks15
+\row@=\count88
+\column@=\count89
+\maxfields@=\count90
+\andhelp@=\toks16
+\eqnshift@=\dimen107
+\alignsep@=\dimen108
+\tagshift@=\dimen109
+\tagwidth@=\dimen110
+\totwidth@=\dimen111
+\lineht@=\dimen112
+\@envbody=\toks17
+\multlinegap=\skip43
+\multlinetaggap=\skip44
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 407.
+
+(/usr/share/texmf/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+)
+\copyins=\insert233
+\abstractbox=\box28
+\listisep=\skip45
+\c@part=\count91
+\c@section=\count92
+\c@subsection=\count93
+\c@subsubsection=\count94
+\c@paragraph=\count95
+\c@subparagraph=\count96
+\c@figure=\count97
+\c@table=\count98
+\abovecaptionskip=\skip46
+\belowcaptionskip=\skip47
+\captionindent=\dimen113
+\thm@style=\toks19
+\thm@bodyfont=\toks20
+\thm@headfont=\toks21
+\thm@notefont=\toks22
+\thm@headpunct=\toks23
+\thm@preskip=\skip48
+\thm@postskip=\skip49
+\thm@headsep=\skip50
+\dth@everypar=\toks24
+)
+(/usr/share/texmf/tex/latex/anysize/anysize.sty
+Package: anysize 1994/08/13 setting margin sizes
+
+document style option `anysize' loaded
+Michael Salzenberg, Thomas Esser, Dirk Hillbrecht
+Version 1.0, Aug 13, 1994
+\@Leftmargin=\dimen114
+\@Rightmargin=\dimen115
+\@Topmargin=\dimen116
+\@Bottommargin=\dimen117
+) (/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
+)
+(/usr/share/texmf/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks25
+\verbatim@line=\toks26
+\verbatim@in@stream=\read1
+)
+(/usr/share/texmf/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks27
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.cfg
+File: graphics.cfg 2005/02/03 v1.3 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+
+(/usr/share/texmf/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count99
+))
+\Gin@req@height=\dimen118
+\Gin@req@width=\dimen119
+)
+\epsfxsize=\dimen120
+\epsfysize=\dimen121
+)
+(/usr/share/texmf/tex/latex/tools/array.sty
+Package: array 2003/12/17 v2.4a Tabular extension package (FMi)
+\col@sep=\dimen122
+\extrarowheight=\dimen123
+\NC@list=\toks28
+\extratabsurround=\skip51
+\backup@length=\skip52
+)
+(/usr/share/texmf/tex/generic/babel/babel.sty
+Package: babel 2004/11/20 v3.8d The Babel package
+
+(/usr/share/texmf/tex/generic/babel/russianb.ldf
+Language: russianb 2004/11/21 v1.1r Russian support from the babel system
+
+(/usr/share/texmf/tex/generic/babel/babel.def
+File: babel.def 2004/11/20 v3.8d Babel common definitions
+\babel@savecnt=\count100
+\U@D=\dimen124
+)
+(/usr/share/texmf/tex/latex/cyrillic/t2aenc.def
+File: t2aenc.def 2004/01/26 v1.0g Cyrillic encoding definition file
+)
+
+Package babel Warning: No input encoding specified for Russian language on inpu
+t line 136.
+
+Package babel Info: Making " an active character on input line 199.
+)) (/usr/share/texmf/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2003/11/30 v6.74m Hypertext links for LaTeX
+\@linkdim=\dimen125
+\Hy@linkcounter=\count101
+\Hy@pagecounter=\count102
+
+(/usr/share/texmf/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2003/11/30 v6.74m Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/share/texmf/tex/latex/hyperref/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive and teTeX
+)
+Package hyperref Info: Option `unicode' set `true' on input line 1830.
+
+(/usr/share/texmf/tex/latex/hyperref/puenc.def
+File: puenc.def 2003/11/30 v6.74m Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Hyper figures OFF on input line 1880.
+Package hyperref Info: Link nesting OFF on input line 1885.
+Package hyperref Info: Hyper index ON on input line 1888.
+Package hyperref Info: Plain pages ON on input line 1893.
+Package hyperref Info: Backreferencing OFF on input line 1900.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 2004.
+(/usr/share/texmf/tex/latex/html/url.sty
+Package: url 1999/03/02  ver 1.4  Verb mode for urls, email addresses, and file
+ names
+)
+LaTeX Info: Redefining \url on input line 2143.
+\Fld@menulength=\count103
+\Field@Width=\dimen126
+\Fld@charsize=\dimen127
+\Choice@toks=\toks29
+\Field@toks=\toks30
+Package hyperref Info: Hyper figures OFF on input line 2618.
+Package hyperref Info: Link nesting OFF on input line 2623.
+Package hyperref Info: Hyper index ON on input line 2626.
+Package hyperref Info: backreferencing OFF on input line 2633.
+Package hyperref Info: Link coloring OFF on input line 2638.
+\c@Item=\count104
+\c@Hfootnote=\count105
+)
+*hyperref using default driver hpdftex*
+(/usr/share/texmf/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2003/11/30 v6.74m Hyperref driver for pdfTeX
+
+(/usr/share/texmf/tex/latex/psnfss/pifont.sty
+Package: pifont 2004/09/15 PSNFSS-v9.2 Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
+
+(/usr/share/texmf/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 64.
+
+(/usr/share/texmf/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+\Fld@listcount=\count106
+\@outlinefile=\write3
+) (./body/cs.tex
+(/usr/share/texmf/tex/latex/base/inputenc.sty
+Package: inputenc 2004/02/05 v1.0d Input encoding file
+
+(/usr/share/texmf/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 1999/11/16 v1.0d Input encoding file
+))) (./main.aux
+LaTeX Font Info:    Try loading font information for T2A+cmr on input line 15.
+
+(/usr/share/texmf/tex/latex/cyrillic/t2acmr.fd
+File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+)
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Try loading font information for U+msa on input line 7.
+ (/usr/share/texmf/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 7.
+
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+)
+(/usr/share/texmf/tex/context/base/supp-pdf.tex
+(/usr/share/texmf/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Miscellaneous (2004.10.26)
+\protectiondepth=\count107
+\scratchcounter=\count108
+\scratchtoks=\toks31
+\scratchdimen=\dimen128
+\scratchskip=\skip53
+\scratchmuskip=\muskip11
+\scratchbox=\box29
+\scratchread=\read2
+\scratchwrite=\write4
+\zeropoint=\dimen129
+\onepoint=\dimen130
+\onebasepoint=\dimen131
+\minusone=\count109
+\thousandpoint=\dimen132
+\onerealpoint=\dimen133
+\emptytoks=\toks32
+\nextbox=\box30
+\nextdepth=\dimen134
+\everyline=\toks33
+\!!counta=\count110
+\!!countb=\count111
+\recursecounter=\count112
+)
+loading : Context Support Macros / PDF (2004.03.26)
+\nofMPsegments=\count113
+\nofMParguments=\count114
+\MPscratchCnt=\count115
+\MPscratchDim=\dimen135
+\MPnumerator=\count116
+\everyMPtoPDFconversion=\toks34
+)
+Package hyperref Info: Link coloring OFF on input line 7.
+ (/usr/share/texmf/tex/latex/hyperref/nameref.sty
+Package: nameref 2003/12/03 v2.21 Cross-referencing by name of section
+\c@section@level=\count117
+)
+LaTeX Info: Redefining \ref on input line 7.
+LaTeX Info: Redefining \pageref on input line 7.
+ (./main.out) (./main.out)
+\openout3 = `main.out'.
+
+
+(./body/title.tex [1{/usr/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+(./body/btitle.tex (./main.toc)
+\tf@toc=\write5
+\openout5 = `main.toc'.
+
+) [2] (./body/TC.tex) (./body/sect0.tex
+Underfull \hbox (badness 1303) in paragraph at lines 3--4
+\T2A/cmr/m/n/12 хра^^?нить боль^^?шое кол^^?ли^^?че^^?ство дан^^?ных в спе^^?ци
+^^?аль^^?ных ба^^?зах. Прай^^?сы, от^^?зы^^?вы
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+
+Underfull \hbox (badness 1184) in paragraph at lines 5--8
+\T2A/cmr/m/n/12 опыт в со^^?зда^^?нии ком^^?мер^^?че^^?ской СУБД Illustra, про^
+^?дви^^?га^^?е^^?мой его мобствен^^?ной
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--8
+
+ []
+
+
+Underfull \hbox (badness 1107) in paragraph at lines 9--10
+\T2A/cmr/m/n/12 В част^^?но^^?сти, необ^^?хо^^?ди^^?мо ре^^?а^^?ли^^?зо^^?вать 
+до^^?бав^^?ле^^?ние, ре^^?дак^^?ти^^?ро^^?ва^^?ние и про^^?смотр
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
+
+ []
+
+) [3] (./body/sect1.tex <123.png, id=81, 532.99126pt x 308.15125pt>
+File: 123.png Graphic file (type png)
+
+<use 123.png>
+Underfull \hbox (badness 1270) in paragraph at lines 3--10
+\T2A/cmr/m/n/12 3)Поведение (Controller). Ин^^?тер^^?пре^^?ти^^?ру^^?ет дан^^?н
+ые, вве^^?ден^^?ные поль^^?зо^^?ва^^?те^^?лем, и
+ []
+
+
+Overfull \hbox (77.74585pt too wide) in paragraph at lines 3--10
+[]
+ []
+
+<223.png, id=82, 2519.4125pt x 2401.97375pt>
+File: 223.png Graphic file (type png)
+ <use 223.png>
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
+[4 <./123.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--26
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+
+ []
+
+[5 <./223.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+
+ []
+
+) [6] (./body/sect2.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 6.
+(/usr/share/texmf/tex/latex/cyrillic/t2acmtt.fd
+File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+
+ []
+
+
+Underfull \hbox (badness 1881) in paragraph at lines 21--22
+[]\T2A/cmr/m/n/12 Сравним ор^^?га^^?ни^^?за^^?цию ас^^?со^^?ци^^?а^^?тив^^?но^^
+?го мас^^?си^^?ва с ре^^?ля^^?ци^^?он^^?ной ор^^?га^^?ни^^?за^^?ци^^?ей
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--47
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--51
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
+
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
+
+ []
+
+
+Overfull \hbox (69.50275pt too wide) in paragraph at lines 98--98
+[]\T2A/cmtt/m/n/12 status_id integer NOT NULL CONSTRAINT status\_id\_ck CHECK (
+status_id IN (0,1,2,3,4))[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--104
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 115--117
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
+
+Overfull \hbox (20.1148pt too wide) in paragraph at lines 131--131
+[]                \T2A/cmtt/m/n/12 c = eval(cgi.params['controller'][0] + 'Cont
+roller').new(cgi)[] 
+ []
+
+[10]
+Underfull \hbox (badness 8189) in paragraph at lines 149--150
+\T2A/cmr/m/n/12 до^^?бав^^?ля^^?ет к вы^^?ход^^?но^^?му html-^^?доку^^?мен^^?ту
+ header и footer из пап^^?ки
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--156
+
+ []
+
+
+Underfull \hbox (badness 1622) in paragraph at lines 157--158
+[]\T2A/cmr/m/n/12 Допустим, поль^^?зо^^?ва^^?тель хо^^?чет по^^?смот^^?реть ин^
+^?фор^^?ма^^?цию о неко^^?то^^?ром рей^^?се,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 168--170
+
+ []
+
+
+Underfull \hbox (badness 2961) in paragraph at lines 171--172
+\T2A/cmr/m/n/12 поль^^?зо^^?вать в пред^^?став^^?ле^^?нии. В ба^^?зо^^?вом клас
+^^?се Controller ре^^?а^^?ли^^?зо^^?ван ме^^?тод
+ []
+
+
+Underfull \hbox (badness 1342) in paragraph at lines 171--172
+\T2A/cmr/m/n/12 filter_for_params(), ко^^?то^^?рый вы^^?би^^?ра^^?ет из хе^^?ша
+ пе^^?ре^^?да^^?ных па^^?ра^^?мет^^?ров толь^^?ко
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+
+ []
+
+
+Underfull \hbox (badness 2359) in paragraph at lines 188--189
+[]\T2A/cmr/m/n/12 Cоздаем эк^^?зем^^?пляр свя^^?зу^^?ю^^?ще^^?го клас^^?са Chec
+kInDeskFlight и за^^?пол^^?ня^^?ем
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--193
+
+ []
+
+
+Underfull \hbox (badness 1226) in paragraph at lines 213--216
+\T2A/cmr/m/n/12 яв^^?ля^^?ет^^?ся .rb а путь до фай^^?ла из ка^^?та^^?ло^^?га t
+emplates опре^^?де^^?ля^^?ет^^?ся функ^^?ци^^?ей
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--216
+
+ []
+
+[12]
+Underfull \hbox (badness 1221) in paragraph at lines 231--232
+\T2A/cmr/m/n/12 при "при^^?вяз^^?ке"стойки к рей^^?су мы долж^^?ны пред^^?ло^^?
+жить поль^^?зо^^?ва^^?те^^?лю толь^^?ко
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
+
+ []
+
+) [13] (./body/sect3.tex
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+[14]
+Overfull \hbox (322.61594pt too wide) in paragraph at lines 93--93
+[]               \T2A/cmtt/m/n/12 onclick = 'javascript:document.location=\"aer
+o.rb?controller=Tickets&action=index&flight_id=#{@flight[:id]}\"'>[] 
+ []
+
+[15] <sc1.png, id=138, 1284.8pt x 1027.84pt>
+File: sc1.png Graphic file (type png)
+ <use sc1.png>
+<sc2.png, id=139, 1284.8pt x 1027.84pt>
+File: sc2.png Graphic file (type png)
+ <use sc2.png>
+<sc3.png, id=140, 1284.8pt x 1027.84pt>
+File: sc3.png Graphic file (type png)
+ <use sc3.png>
+<sc4.png, id=141, 1284.8pt x 1027.84pt>
+File: sc4.png Graphic file (type png)
+ <use sc4.png>)
+Overfull \hbox (6.44263pt too wide) in paragraph at lines 104--21
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--21
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--21
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--21
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--21
+
+ []
+
+[16 <./sc1.png>] [17 <./sc2.png>] [18 <./sc3.png>] [19 <./sc4.png>]
+(./body/bib.tex) [20
+! pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \endgroup \set@typeset@protect 
+l.23 \end{document}
+                   
+! pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \endgroup \set@typeset@protect 
+l.23 \end{document}
+                   
+! pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \endgroup \set@typeset@protect 
+l.23 \end{document}
+                   ] (./main.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 5642 strings out of 94500
+ 67487 string characters out of 1176766
+ 121280 words of memory out of 1000000
+ 8498 multiletter control sequences out of 10000+50000
+ 16694 words of font info for 50 fonts, out of 500000 for 2000
+ 741 hyphenation exceptions out of 1000
+ 34i,6n,40p,998b,297s stack positions out of 1500i,500n,5000p,200000b,5000s
+PDF statistics:
+ 163 PDF objects out of 300000
+ 34 named destinations out of 131072
+ 135 words of extra memory for PDF output out of 65536
+ </var/lib/texmf/pk/ljfour/lh/lh-t2a/latt1200.600pk> </var/lib/texmf/pk/ljfou
+r/lh/lh-t2a/labx1200.600pk></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb>
+ </var/lib/texmf/pk/ljfour/lh/lh-t2a/larm0900.600pk> </var/lib/texmf/pk/ljfour/
+lh/lh-t2a/labx1440.600pk> </var/lib/texmf/pk/ljfour/lh/lh-t2a/lati1200.600pk> <
+/var/lib/texmf/pk/ljfour/lh/lh-t2a/larm1200.600pk> </var/lib/texmf/pk/ljfour/lh
+/lh-t2a/lacc1200.600pk>
+Output written on main.pdf (20 pages, 640636 bytes).

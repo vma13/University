@@ -1,0 +1,23 @@
+%h1 Классы
+
+%table
+  %thead
+    %tr
+      %th=SchoolGroup.human_attribute_name('number')
+      %th=SchoolGroup.human_attribute_name('year')
+      -if @current_user && @current_user.admin?
+        %th
+        %th
+  %tbody
+    - @school_groups.each do |sgroup|
+      %tr
+        %td= link_to sgroup.number, sgroup
+        %td= link_to sgroup.year, sgroup
+        -if @current_user && @current_user.admin?
+          %td= link_to 'Редактировать', edit_school_group_path(sgroup)
+          %td= link_to 'Удалить', sgroup, :confirm => 'Вы уверены?', :method => :delete
+
+=paginate @school_groups
+%br
+-if @current_user && @current_user.admin?
+  = link_to 'Добавить', new_school_group_path

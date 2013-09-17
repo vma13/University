@@ -1,0 +1,23 @@
+%h1 Курсы
+
+%table
+  %thead
+    %tr
+      %th=Course.human_attribute_name('start_date')
+      %th=Course.human_attribute_name('finish_date')
+      -if @current_user && @current_user.admin?
+        %th
+        %th
+  %tbody
+    -@courses.each do |course|
+      %tr
+        %td= link_to course.start_date.strftime("%d.%m.%Y"), course
+        %td= link_to course.finish_date.strftime("%d.%m.%Y"), course
+        -if @current_user && @current_user.admin?
+          %td= link_to 'Редактировать', edit_course_path(course)
+          %td= link_to 'Удалить', course, :confirm => 'Вы уверены?', :method => :delete
+
+=paginate @courses
+%br
+-if @current_user && @current_user.admin?
+  = link_to 'Добавить', new_course_path

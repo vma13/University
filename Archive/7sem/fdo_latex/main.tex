@@ -1,0 +1,87 @@
+\documentclass[a4paper,12pt]{memoir}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{indentfirst,amsmath,graphicx,pgf}
+\usepackage{cmap}
+
+% Настройка: размер текста
+\settypeblocksize{250mm}{160mm}{*}
+\setulmargins{*}{*}{1}
+\setlrmargins{*}{*}{1}
+\checkandfixthelayout
+
+% Величина пробела до и после рисунков и таблиц 
+\setlength{\intextsep}{10pt}
+% Нумерация рисунков и таблиц сплошная по всему документу
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+
+
+% В русскоязычных книгах и статьях знаки равенства/неравенства, сложения,
+% вычитания и умножения принято в случае переноса формулы на другую строку
+% дублировать
+\renewcommand\ne{\mathchar"3236\mathchar"303D\nobreak
+      \discretionary{}{\usefont
+      {OMS}{cmsy}{m}{n}\char"36\usefont
+      {OT1}{cmr}{m}{n}\char"3D}{}}
+\begingroup
+\catcode`\+\active\gdef+{\mathchar8235\nobreak\discretionary{}%
+ {\usefont{OT1}{cmr}{m}{n}\char43}{}}
+\catcode`\-\active\gdef-{\mathchar8704\nobreak\discretionary{}%
+ {\usefont{OMS}{cmsy}{m}{n}\char0}{}}
+\catcode`\=\active\gdef={\mathchar12349\nobreak\discretionary{}%
+ {\usefont{OT1}{cmr}{m}{n}\char61}{}}
+\endgroup
+\def\cdot{\mathchar8705\nobreak\discretionary{}%
+ {\usefont{OMS}{cmsy}{m}{n}\char1}{}}
+\def\times{\mathchar8706\nobreak\discretionary{}%
+ {\usefont{OMS}{cmsy}{m}{n}\char2}{}}
+\def\approx{\mathchar12825\nobreak\discretionary{}%
+ {\usefont{OMS}{cmsy}{m}{n}\char25}{}}
+\AtBeginDocument{%
+\mathcode`\==32768%
+\mathcode`\+=32768%
+\mathcode`\-=32768%
+}
+
+% Для переносов слов с дефисами
+\lccode`\-=`\-\defaulthyphenchar=127
+
+% Оформление секций
+\makeatletter
+\renewcommand*{\thesection}{\@arabic\c@section.}
+\setsecnumformat{\csname the#1\endcsname\space}
+\makeatother
+
+% Устраняем большие расстояния (по вертикали) в списках
+\tightlists
+
+
+% Оформление списка литературы
+\setbiblabel{[#1]\hfill}
+\renewcommand{\bibsection}{%
+  \section*{Список литературы и интернет-ресурсов}
+  \prebibhook}
+\newcommand{\link}[1]{\texttt{#1}}
+
+
+% Оформление страниц -- простейшее (с нумерацией внизу)
+\pagestyle{plain}
+
+\begin{document}
+\input{title}
+\input{btitle}
+\newpage
+\input{intro}
+\newpage
+\input{sect2}
+\newpage
+\input{sect4}
+\newpage
+\input{sect5}
+\newpage
+\input{bib}
+\end{document}
+
+
+

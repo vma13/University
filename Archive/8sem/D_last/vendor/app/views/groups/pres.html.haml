@@ -1,0 +1,35 @@
+= form_tag create_pres_group_path(@group) do
+  %br
+  - i = 0
+  %table{:id => 'pres'}
+    %thead
+      %tr
+        %th
+        %th{:rowspan => 2} Школьник
+        -@group.statements.where('date < ?', Time.now.to_date).each do |statement|
+          %th=statement.date.strftime("%d.%m.%Y")
+          - i += 1            
+    %tbody
+      %tr
+        %td
+        %td
+        - j = 0
+        - while j < i
+          %td= button_to_function '*', "select_table_row('pres', "+ j.to_s+")", :class=>'button'
+          - j += 1
+      -@group.schoolkids.each_with_index do |schoolkid,i|
+        %tr
+          %td= i+1          
+          %td=link_to schoolkid.fio, schoolkid          
+          -@group.statements.each do |statement|
+            -pres=schoolkid.schoolkid_statements.detect{|s| s.statement_id == statement.id}
+            %td= check_box_tag "schoolkid_statements[#{schoolkid.id}][#{statement.id}]","1", pres.try(:pres)
+           
+  %br 
+  = submit_tag "Сохранить изменения"
+  %br
+  %br
+  = link_to image_tag("/assets/images/pdf.png", :size => "32x32", :title => "сгенерировать PDF"), stat_group_path(:type => 0, :format => :pdf) 
+  \|
+  = link_to image_tag("/assets/images/list.png", :size => "32x32", :title => "К списку групп"), groups_path
+ 

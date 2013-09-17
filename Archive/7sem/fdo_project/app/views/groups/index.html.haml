@@ -1,0 +1,25 @@
+%h1 Список учебных групп
+
+%table
+  %thead
+    %tr
+      %th=Group.human_attribute_name('number')
+      %th=Group.human_attribute_name('year')
+      %th=Group.human_attribute_name('gtype')
+      -if @current_user && @current_user.admin?
+        %th
+        %th
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td=link_to group.number, group
+        %td=link_to group.year, group
+        %td=link_to group.group_type?, group
+        -if @current_user && @current_user.admin?
+          %td= link_to 'Редактировать', edit_group_path(group)
+          %td= link_to 'Удалить', group, :confirm => 'Вы уверены?', :method => :delete
+
+=paginate @groups
+%br
+-if @current_user && @current_user.admin?
+  = link_to 'Новая группа', new_group_path

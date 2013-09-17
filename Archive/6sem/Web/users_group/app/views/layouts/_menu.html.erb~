@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html>
+<ul>
+ <li><%=link.to "Пользователи", users_path%></li>
+</ul>
+</html>

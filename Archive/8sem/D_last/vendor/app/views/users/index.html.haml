@@ -1,0 +1,24 @@
+%h1 Список пользователей
+
+%br
+%br
+%table
+  %thead
+    %tr
+      %th=User.human_attribute_name(:login)
+      %th=User.human_attribute_name(:role)
+      -unless @users.blank?
+        %th
+        %th
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td=link_to user.login, user
+        %td=link_to user.human_role, user
+        - if @current_user.admin?
+          %td= link_to image_tag("/assets/images/edit.png", :size => "32x32", :title => "Редактировать"), edit_user_path(user)
+          %td= link_to image_tag("/assets/images/delete.png", :size => "32x32", :title => "Удалить"), user, :confirm => 'Вы уверены?', :method => :delete
+%br
+=paginate @users
+%br
+= link_to image_tag("/assets/images/add.png", :size => "32x32", :title => "Добавить пользователя"), new_user_path

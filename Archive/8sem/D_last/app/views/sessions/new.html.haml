@@ -1,0 +1,13 @@
+#errors
+  =flash[:error]
+=form_tag session_path, :id => 'loginForm' do
+  .field
+    =label_tag :login,t('activerecord.attributes.user.login')
+    =text_field_tag :login
+  .field
+    =label_tag :password,t('activerecord.attributes.user.password')
+    =password_field_tag :password
+  .submit
+    =button_tag "Войти"
+    %label{:id => 'remember_me'} 
+    %input{:type => 'checkbox', :value => '1', :name =>'remember_me'} Запомнить меня 

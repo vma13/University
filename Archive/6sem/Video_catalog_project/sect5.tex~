@@ -1,0 +1,47 @@
+\section{Приложение}
+\vspace*{1cm}
+\subsection{Пример работы}
+\vspace*{1cm}
+Приведем пример работы тех изменений, которые мы внесли в эталонный проект.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.35]{image/1.png}
+\end{center}
+\caption{Статистика}
+\end{figure}
+\newpage
+Посмотрим как будет выглядеть интерфейс просмотра награды у конкретной персоны и фильма. 
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.25]{image/2.png}
+\end{center}
+\caption{Награды у актера}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.3]{image/3.png}
+\end{center}
+\caption{Награды у фильма}
+\end{figure}
+\newpage
+Попытаемся добавить новую награду, при этом специально забудем указать номинацию и год вручения награды.
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.25]{image/4.png}
+\end{center}
+\caption{Добавление награды}
+\end{figure}
+
+Награда не сохранилась и отобразилось сообщение об ошибке.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.25]{image/5.png}
+\end{center}
+\caption{Ошибка}
+\end{figure}
+\newpage
+\endinput

@@ -1,0 +1,18 @@
+%h1 Список дисциплин
+%table
+  %thead
+    %tr
+      %th=Discipline.human_attribute_name('full_name')
+      -unless @disciplines.blank?
+        %th
+        %th
+  %tbody
+    -@disciplines.each do |discipline|
+      %tr
+        %td= link_to discipline.full_name, discipline
+        %td= link_to image_tag("/assets/images/edit.png", :size => "32x32", :title => "Редактировать"), edit_discipline_path(discipline)
+        %td= link_to image_tag("/assets/images/delete.png", :size => "32x32", :title => "Удалить"), discipline, :confirm => 'Вы уверены?', :method => :delete
+
+=paginate @disciplines
+%br
+=link_to image_tag("/assets/images/add.png", :size => "40x40", :title => "Добавить дисциплину"), new_discipline_path

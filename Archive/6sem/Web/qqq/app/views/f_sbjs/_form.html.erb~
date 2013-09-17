@@ -1,0 +1,27 @@
+<%= form_for(@f_sbj) do |f| %>
+  <% if @f_sbj.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@f_sbj.errors.count, "error") %> prohibited this f_sbj from being saved:</h2>
+
+      <ul>
+      <% @f_sbj.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<h2>Категория</h2>
+<%= f.select :category_id, Category.all.collect { |p| [p.name, p.id] } %>
+
+</div>
+
+<% end %>

@@ -1,0 +1,50 @@
+%p
+  %b="#{Group.human_attribute_name(:number)}:"
+  =@group.number
+  %br
+  %b="#{Group.human_attribute_name(:course_id)}:"
+  - c = Course.find( @group.course_id )
+  - d = Discipline.find( c.discipline_id )
+  = link_to d.full_name, d
+  %br
+  %b Продолжительность
+  =link_to c.start_date.strftime("%d.%m.%y").to_s + " - " + c.finish_date.strftime("%m.%d.%y").to_s, c
+  %br
+  %b="#{Group.human_attribute_name(:year)}:"
+  = @group.year
+  %br
+  %b="#{Group.human_attribute_name(:gtype)}:"
+  = @group.group_type?
+  %br
+  %br
+  %b= link_to image_tag("/assets/images/mark.png", :size => "32x32", :title => "Успеваемость"), mark_group_path(@group.id)
+  &nbsp&nbsp&nbsp
+  %b= link_to image_tag("/assets/images/presence.png", :size => "32x32", :title => "Посещаемость"), pres_group_path(@group.id)
+  &nbsp&nbsp&nbsp
+  %b= link_to image_tag("/assets/images/res.png", :size => "32x32", :title => "Итоговая аттестационная ведомость группы"), res_group_path(@group.id)         
+             
+-unless @group.schoolkids.blank?
+  %h2 Состав группы
+  - i = 1
+  %table
+    %thead
+      %tr
+        %th №
+        %th ФИО
+    %tbody
+      - @group.schoolkids.each do |kid|
+        %tr
+          %td= i
+          %td= link_to kid.fio, kid
+        - i += 1
+
+%br
+= link_to image_tag("/assets/images/prev.png", :size => "32x32", :title => "Назад"), groups_path
+&nbsp; | &nbsp;
+-if @current_user && ( @current_user.admin? || @current_user.regular? )
+  = link_to image_tag("/assets/images/edit.png", :size => "32x32", :title => "Редактировать"), edit_group_path(@group)
+  &nbsp
+  \|
+  &nbsp
+  = link_to image_tag("/assets/images/generate.png", :size => "32x32", :title => "Сформировать состав"), generate_group_path(@group)
+  
