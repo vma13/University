@@ -1,0 +1,250 @@
+Some frequently used predicates: file frequent.pl
+
+
+CHAPTER 1
+
+Figure 1.8  The family program.
+
+
+CHAPTER 2
+
+Figure 2.14  A program for the monkey and banana problem.
+
+Figure 2.16  Four versions of the predecessor program.
+
+
+CHAPTER 4
+
+Figure 4.5  A flight route planner and an example flight timetable.
+
+Figure 4.7  Program 1 for the eight queens problem.
+
+Figure 4.9  Program 2 for the eight queens problem.
+
+Figure 4.11  Program 3 for the eight queens problem.
+
+
+CHAPTER 7
+
+Figure 7.2  A program for cryptoarithmetic puzzles.
+
+Figure 7.3  A procedure for substituting a subterm of a term by another subterm.
+
+Figure 7.4   An implementation of the findall relation.
+
+
+CHAPTER 9
+
+Figure 9.2  Quicksort.
+
+Figure 9.3  A more efficient implementation of quicksort using difference-pair
+  representation for lists. 
+
+Figure 9.7  Finding an item X in a binary dictionary.
+
+Figure 9.10  Inserting an item as a leaf into the binary dictionary.
+
+Figure 9.13  Deleting from the binary dictionary.
+
+Figure 9.15  Insertion into the binary dictionary at any level of the tree.
+
+Figure 9.17  Displaying a binary tree.
+
+Figure 9.20  Finding an acyclic path, Path, from A to Z in Graph.
+
+Figure 9.21  Path-finding in a graph:  Path is an acyclic path with cost Cost from A to Z in Graph.
+
+Figure 9.22  Finding a spanning tree of a graph: an `algorithmic' program. 
+
+Figure 9.23  Finding a spanning tree of a graph: a `declarative' program. 
+
+
+CHAPTER 10
+
+Figure 10.6  Inserting and deleting in the 2-3 dictionary. 
+
+Figure 10.7  A program to display a 2-3 dictionary.
+
+Figure 10.10  AVL-dictionary insertion.
+
+
+CHAPTER 11
+
+Figure 11.7  A depth-first search program that avoids cycling.
+
+Figure 11.8  A depth-limited, depth-first search program.
+
+Figure 11.10  An implementation of breadth-first search.
+
+Figure 11.11  A more efficient program than that of Figure 11.10 for 
+the breadth-first search.
+
+
+CHAPTER 12
+
+Figure 12.3  A best-first search program.
+
+Figure 12.6  Problem-specific procedures for the eight puzzle, 
+to be used in best-first search of Figure 12.3.
+
+Figure 12.9  Problem-specific relations for the task-scheduling problem.
+
+Figure 12.10  An implementation of the IDA* algorithm.
+
+Figure 12.13  A best-first search program that only requires 
+space linear in the depth of search (RBFS algorithm). 
+
+
+CHAPTER 13
+
+Figure 13.8: Depth-first search for AND/OR graphs.
+
+Figure 13.12  Best-first AND/OR search program.
+
+
+CHAPTER 14
+
+Figure 14.3  Scheduling with precedence constraints and no resource constraints.
+
+Figure 14.4  A CLP(R) scheduling program for problems with precedence and resource constraints.
+
+Figure 14.6  Constraints for some electrical components and connections.
+
+Figure 14.7  Two electrical circuits.
+
+Figure 14.8  A cryptarithmetic puzzle in CLP(FD).
+
+Figure 14.9  A CLP(FD) program for eight queens.
+
+
+CHAPTER 15
+
+Figure 15.6  A backward chaining interpreter for if-then rules.
+
+Figure 15.7  A forward chaining rule interpreter.
+
+Figure 15.8  Generating proof trees.
+
+Figure 15.9  An interpreter for rules with certainties.
+
+Figure 15.11  An interpreter for belief networks.
+
+Figure 15.12  A specification of the belief network of Fig. 15.10 as 
+expected by the program of Fig. 15.11.
+
+Figure 15.14  Some frames.
+
+
+CHAPTER 16
+
+Figure 16.1  A simple knowledge base for identifying animals.
+
+Figure 16.3  A knowledge base for identifying faults in an electric network.
+
+Figures 16.6, 16.7, 16.8, 16.9 combined, with small modifications, into file shell.pl:  
+(an expert system shell)
+
+
+CHAPTER 17
+
+Figure 17.2  A definition of the planning space for the blocks world.
+
+Figure 17.3  A definition of the planning space for manipulating camera.
+
+Figure 17.5  A simple means-ends planner.
+
+Figure 17.6  A means-ends planner with goal protection. 
+
+Figure 17.8  A planner based on goal regression. 
+
+Figure 17.9  A state-space definition for means-ends planning based on goal regression.
+
+
+CHAPTER 18
+
+Figure 18.9  Attribute definitions and examples for learning to recognize 
+objects from their silhouettes (from Figure 18.8).
+
+Figure 18.11  A program that induces if-then rules.
+
+File learn_tree.pl: Induction of decision trees (program sketched on pages 466-468)
+
+File prune_tree.pl: Solution to Exercise 18.6
+
+
+CHAPTER 19
+
+Figure 19.1  A definition of the problem of learning predicate has_daughter.
+
+Figure 19.3  A loop-avoiding interpreter for hypotheses.
+
+Figure 19.4  MINIHYPER - a simple ILP program.
+
+Figure 19.5  Problem definition for learning list membership.
+
+Figure 19.7  The HYPER program. The procedure prove/3 is as in Figure 19.3.
+
+Figure 19.8  Learning about odd-length and even-length simultaneously.
+
+Figure 19.9  Learning about a path in a graph.
+
+Figure 19.10  Learning insertion sort.
+
+Figure 19.12  Learning the concept of arch.
+
+
+CHAPTER 20
+
+Figure 20.3  Qualitative modelling program for simple circuits. 
+
+Figure 20.8  A simulation program for qualitative differential equations. 
+
+Figure 20.9  A qualitative model of bath tub.
+
+Figure 20.11  A qualitative model of the circuit in Figure 20.10.
+
+Figure 20.14  A qualitative model of the block-spring system.
+
+File energy.pl: An oscillator model with energy constraint (alternative to one in Fig. 20.14).
+
+
+CHAPTER 21
+
+Figure 17.6  A DCG handling the syntax and meaning of a small subset of natural language.
+
+
+CHAPTER 22
+
+Figure 22.2  A game tree translated to Prolog.
+
+Figure 22.3  A straightforward implementation of the minimax principle.
+
+Figure 22.5  An implementation of the alpha-beta algorithm.
+
+Figures 22.6, 22.7, 22.10 combined into single file chess.pl.
+
+
+CHAPTER 23
+
+Figure 23.1  The basic Prolog meta-interpreter.
+
+Figure 23.2  A Prolog meta-interpreter for tracing programs in pure Prolog.
+
+Figure 23.3  Two problem definitions for explanation-based generalization.
+
+Figure 23.4  Explanation-based generalization.
+
+Figure 23.5  A simple interpreter for object-oriented programs.
+
+Figure 23.6  An object-oriented program about geometric figures.
+
+Figure 23.8  An object-oriented program about a robot world.
+
+Figure 23.12  A pattern-directed program to find the greatest 
+common divisor of a set of numbers.
+
+Figure 23.13  A small interpreter for pattern-directed programs.
+
+Figure 23.15  A pattern-directed program for simple resolution theorem proving.
+
+Figure 23.16  Translating a propositional calculus formula into a set of (asserted) clauses.
